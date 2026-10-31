@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Festora · Event and fest management</title>
 <meta name="description" content="Plan and manage every fest in one place — registrations, schedules, judging, live results and certificates.">
-<meta name="theme-color" content="#245B62">
+<meta name="theme-color" content="#122314">
 <meta property="og:title" content="Festora">
 <meta property="og:description" content="Event and fest management, all in one place.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23173C40%22%2F%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23F7F4EC%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23D5AA65%22%2F%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23173C40%22%2F%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23F7F4EC%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23D5AA65%22%2F%3E%3C%2Fsvg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
 </style>
 <style>
@@ -916,6 +916,259 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:640px){.panel{border-radius:15px}.sec{padding-block:44px}}
 
 
+
+/* =========================================================
+   FESTORA × TOMORRO DESIGN SYSTEM  (presentation layer only)
+   Forest Depths + Bone White + a single Electric Sprout accent.
+   Display: Ozik substitute (Bricolage Grotesque 800, 0.9 leading)
+   UI: Aeonik substitute (Geist). Editorial accent: Instrument Serif.
+   No JS, API or data logic is touched by this block.
+   ========================================================= */
+:root{
+  --forest:#122314; --moss:#273F2B; --lichen:#7E8371; --fern:#B7BDA5;
+  --sprout:#68EF3F; --verdant:#26A200; --verdant-ink:#1C7C00;
+  --wash:#E7F9DD; --mist:#D9DECA; --onyx:#30322A; --bone:#F2F5EB; --carbon:#222222;
+  --bg:#FFFFFF; --surface:#F2F5EB; --surface-2:#E7EBDC; --ink:#30322A; --muted:#5F6455; --line:#D9DECA;
+  --brand:#1C7C00; --brand-2:#166000; --brand-soft:#E7F9DD; --on-brand:#FFFFFF; --logo:#122314;
+  --accent:#68EF3F; --accent-soft:#E7F9DD; --on-accent:#30322A;
+  --good:#1C7C00; --good-soft:#E7F9DD; --pend:#8A5A00; --pend-soft:#FBF1D6; --warn:#B3261E; --warn-soft:#FBE7E4;
+  --shadow:none; --shadow-lg:0 24px 60px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.2);
+  --glass:rgba(255,255,255,.9); --glass-strong:#FFFFFF; --glass-line:#D9DECA; --glass-edge:transparent; --sheen:transparent;
+  --blobA:transparent; --blobB:transparent; --blobC:transparent;
+  --display:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ozik:"Bricolage Grotesque","Geist",system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --r-card:20px; --r-pill:28px;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1A0E; --surface:#122314; --surface-2:#1A2F1D; --ink:#FFFFFF; --muted:#B7BDA5; --line:#30322A;
+  --brand:#68EF3F; --brand-2:#52D12D; --brand-soft:rgba(104,239,63,.12); --on-brand:#30322A; --logo:#FFFFFF;
+  --accent:#68EF3F; --accent-soft:rgba(104,239,63,.12); --on-accent:#30322A;
+  --good:#68EF3F; --good-soft:rgba(104,239,63,.14); --pend:#FBBF24; --pend-soft:rgba(251,191,36,.14); --warn:#F87171; --warn-soft:rgba(248,113,113,.14);
+  --glass:rgba(18,35,20,.9); --glass-strong:#122314; --glass-line:#30322A;
+}}
+:root[data-theme="dark"]{
+  --bg:#0C1A0E; --surface:#122314; --surface-2:#1A2F1D; --ink:#FFFFFF; --muted:#B7BDA5; --line:#30322A;
+  --brand:#68EF3F; --brand-2:#52D12D; --brand-soft:rgba(104,239,63,.12); --on-brand:#30322A; --logo:#FFFFFF;
+  --accent:#68EF3F; --accent-soft:rgba(104,239,63,.12); --on-accent:#30322A;
+  --good:#68EF3F; --good-soft:rgba(104,239,63,.14); --pend:#FBBF24; --pend-soft:rgba(251,191,36,.14); --warn:#F87171; --warn-soft:rgba(248,113,113,.14);
+  --glass:rgba(18,35,20,.9); --glass-strong:#122314; --glass-line:#30322A;
+}
+
+/* ---- dark scope: any surface that sits on Forest Depths remaps the tokens ---- */
+.lnav,.top,.hero,.band,#roles,.sec.dk,.foot,.final,.lside{
+  --ink:#FFFFFF; --muted:#B7BDA5; --line:#30322A;
+  --surface:color-mix(in srgb,#fff 5%,#122314); --surface-2:color-mix(in srgb,#fff 9%,#122314);
+  --brand:#68EF3F; --brand-2:#52D12D; --brand-soft:rgba(104,239,63,.12); --on-brand:#30322A; --logo:#FFFFFF;
+  --accent:#68EF3F; --accent-soft:rgba(104,239,63,.12); --on-accent:#30322A;
+  --good:#68EF3F; --good-soft:rgba(104,239,63,.14); --pend:#FBBF24; --pend-soft:rgba(251,191,36,.14);
+  --warn:#F87171; --warn-soft:rgba(248,113,113,.14);
+  --glass-strong:#122314; --glass-line:#30322A;
+  color:#fff;
+}
+/* ...except product mockups, which stay crisp white against the dark canvas */
+.hero .win,.hero .float{
+  --ink:#30322A; --muted:#5F6455; --line:#D9DECA; --surface:#FFFFFF; --surface-2:#F2F5EB;
+  --brand:#1C7C00; --brand-2:#166000; --brand-soft:#E7F9DD; --on-brand:#FFFFFF; --logo:#122314;
+  --good:#1C7C00; --good-soft:#E7F9DD; --pend:#8A5A00; --pend-soft:#FBF1D6; --warn:#B3261E; --warn-soft:#FBE7E4;
+  --accent:#68EF3F; --accent-soft:#E7F9DD; --on-accent:#30322A; --glass-strong:#fff; --glass-line:#D9DECA;
+  color:#30322A;
+}
+
+/* ---- canvas ---- */
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;font-weight:400;letter-spacing:-.003em;-webkit-font-smoothing:antialiased}
+body::after,.aurora{display:none!important}
+body:has(.lnav){background:#122314}
+body:has(.lnav)::before{background:#122314}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.021em}
+h2{font-size:24px;font-weight:700;letter-spacing:-.015em}
+h3{font-weight:600}
+.hint{color:var(--muted)}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--sprout);outline-offset:2px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sprout);outline-offset:2px}
+
+/* ---- floating pill navigation (landing + app) ---- */
+.top,.lnav{
+  position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);z-index:25;
+  width:min(1200px,calc(100% - 24px));margin:16px auto 0;
+  background:rgba(48,50,42,.92);border:1px solid #3d4035;border-radius:28px;
+  box-shadow:0 8px 32px rgba(0,0,0,.25);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.lnav{margin-bottom:-84px}
+.top .in.gut,.lnav .in.gut{padding-left:12px;padding-right:12px}
+.top .hb,.lnav .hb{border-radius:50%;background:transparent;border:1px solid #4a4d40;color:#fff}
+.top .hb:hover,.lnav .hb:hover{background:rgba(255,255,255,.08)}
+.hb[aria-expanded="true"]{background:var(--sprout);color:var(--onyx);border-color:transparent}
+.brandname{font-family:var(--display);font-weight:700;letter-spacing:.12em}
+.drop{background:#122314;border:1px solid #30322A;border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);backdrop-filter:none;-webkit-backdrop-filter:none}
+.drop a,.drop button{color:#fff;font-weight:500;border-radius:16px}
+.drop a:hover,.drop button:hover{background:rgba(255,255,255,.07)}
+.drop a svg,.drop button svg{color:var(--sprout)}
+.drop .lbl{color:var(--lichen)}
+.drop hr{border-top-color:#30322A}
+.drop button[aria-current="true"]{background:rgba(104,239,63,.12);color:var(--sprout)}
+.top select{background:rgba(255,255,255,.07);color:#fff;border-color:#4a4d40}
+.top select option{color:#30322A;background:#fff}
+
+/* ---- buttons: one filled green, ghosts for everything else ---- */
+.btn{font:500 14px var(--body);letter-spacing:-.005em;border-radius:var(--r-pill);padding:9px 20px;
+  background:var(--sprout);color:var(--onyx);border:1px solid transparent;box-shadow:none;
+  transition:background .18s ease,transform .18s ease,border-color .18s ease}
+.btn:not(.ghost){box-shadow:none}
+.btn:hover{background:#7CF55A;box-shadow:none}
+.btn:active{transform:translateY(1px)}
+.btn.alt{background:var(--sprout);color:var(--onyx)}
+.btn.alt:hover{filter:none;background:#7CF55A}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--onyx)}
+.btn.ghost:hover{background:var(--surface-2);box-shadow:none}
+.lnav .btn.ghost,.top .btn.ghost,.hero .btn.ghost,.band .btn.ghost,#roles .btn.ghost,.final .btn.ghost,.foot .btn.ghost,.lside .btn.ghost,.sec.dk .btn.ghost{
+  background:transparent;color:#fff;border-color:#fff}
+.lnav .btn.ghost:hover,.top .btn.ghost:hover,.hero .btn.ghost:hover,.final .btn.ghost:hover,.foot .btn.ghost:hover{background:rgba(255,255,255,.1)}
+.btn.bad{background:var(--warn);color:#fff}
+.btn.sm{padding:5px 14px;font-size:13px}
+.btn.lg{padding:13px 28px;font-size:16px}
+/* festival custom colour is a paid feature: keep it on primary buttons when a theme is active */
+html:has(#ftheme:not(:empty)) .btn:not(.ghost):not(.alt):not(.bad){background:var(--brand);color:var(--on-brand)}
+html:has(#ftheme:not(:empty)) .btn:not(.ghost):not(.alt):not(.bad):hover{background:var(--brand-2)}
+
+/* ---- forms ---- */
+input,select,textarea{font:400 15px var(--body);background:#fff;color:var(--ink);border:1px solid var(--mist);padding:11px 16px}
+input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),select{border-radius:24px}
+textarea{border-radius:18px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--verdant);box-shadow:0 0 0 3px rgba(104,239,63,.35)}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#122314;border-color:#30322A}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) input,:root:not([data-theme="light"]) select,:root:not([data-theme="light"]) textarea{background:#122314;border-color:#30322A}}
+input::placeholder,textarea::placeholder{color:#8a8f7c}
+.sw input:checked+span{background:var(--verdant)}
+.chip[aria-pressed="true"]{background:var(--sprout);color:var(--onyx);border-color:transparent}
+
+/* ---- surfaces: flat, hairline-framed, no drop shadows ---- */
+.panel,.lcard,.bx,.feat>div,.price,.faq details,.cmp,.join>div,.sc-board,.sc-card,.stat,.plancard,.gate,.fg,.mini,.pc{
+  border-radius:var(--r-card);border:1px solid var(--line);box-shadow:none}
+.panel,.stat,.fg,.bx,.sc-card,.sc-board,.plancard,.faq details{background:var(--surface)}
+.panel{padding:clamp(20px,2.4vw,32px)}
+.lcard,.gate{box-shadow:none;border-color:var(--line)}
+th{background:var(--surface-2);color:var(--muted);font-weight:500;letter-spacing:.06em}
+td,th{border-bottom-color:var(--line)}
+.pill{font-weight:500;border-radius:40px;padding:4px 12px}
+.pill.ok{background:var(--wash);color:var(--moss)}
+.pc .badge2{background:var(--sprout);color:var(--onyx);font-weight:600}
+.prog i{background:var(--sprout)}
+.toast{border-radius:var(--r-pill);background:var(--onyx);color:#fff}
+.sec-h .k,.bx .who,.steps2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;letter-spacing:.02em;text-transform:none;color:var(--brand)}
+
+/* ---- landing: dark hero, floating tilted mockup, sprout orb ---- */
+.hero{background:#122314;border:0;color:#fff;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:auto auto -240px -180px;width:600px;height:600px;border-radius:9999px;
+  background:linear-gradient(160deg,#000000,#273F2B);opacity:.55;pointer-events:none;
+  -webkit-mask-image:none;mask-image:none;-webkit-mask-composite:initial;mask-composite:initial;
+}
+.hero::after{
+  content:"";position:absolute;inset:-260px -200px auto auto;width:520px;height:520px;border-radius:9999px;pointer-events:none;
+  background:linear-gradient(200deg,#273F2B,#000000);opacity:.4;
+}
+.hero .in{padding-block:160px 96px;gap:56px}
+.hero h1{font-family:var(--ozik);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:.9;letter-spacing:-.014em;color:#fff;margin-top:24px}
+.hero h1 em{color:var(--sprout);font-style:normal}
+.hero h1 em::after{display:none}
+.hero .lede{color:var(--fern);font-size:18px;line-height:1.5}
+.eyebrow{background:transparent;border:1px solid var(--lichen);color:#fff;font-weight:400;font-size:14px;padding:4px 16px 4px 6px;border-radius:9999px}
+.eyebrow span{background:var(--sprout);color:var(--onyx);font-weight:500;font-size:12px;padding:2px 10px;border-radius:40px}
+.reassure{color:var(--fern)}
+.reassure svg{color:var(--sprout)}
+.paidstrip{background:rgba(255,255,255,.04);border:1px solid #30322A;border-radius:var(--r-card);color:#fff}
+.paidstrip small{color:var(--fern)}
+.paidstrip .pill.ok{background:var(--sprout);color:var(--onyx)}
+.hero .win{border:0;border-radius:var(--r-card);box-shadow:0 24px 60px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.2);transform:rotate(-4deg);transform-origin:50% 60%;background:#fff}
+.hero .win .bar{background:var(--bone)}
+.hero .float{border:1px solid var(--mist);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.2);background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}
+.hero .float.f1{transform:rotate(3deg)}.hero .float.f2{transform:rotate(-3deg)}
+@media(max-width:900px){.hero .in{padding-block:132px 64px}.hero .win{transform:rotate(-2deg)}}
+
+/* ---- bands alternate dark / light, never a gradient ---- */
+.band{background:#122314;border:0;border-top:1px solid #30322A;color:var(--fern)}
+.band b{color:#fff;opacity:.55;font-weight:500}
+.band .sep{background:#30322A}
+.sec{background:#fff;padding-block:clamp(64px,8vw,112px)}
+.sec.alt{background:#fff;border:0}
+#roles,.sec.alt:not(#roles):not(#pricing){background:#122314;color:#fff}
+#pricing{background:var(--bone)}
+#pricing .plancard,#pricing .price{background:#fff}
+.sec-h h2{font-family:var(--ozik);font-weight:800;font-size:clamp(32px,4.4vw,56px);line-height:.95;letter-spacing:-.014em}
+.sec-h p{color:var(--muted)}
+.facts{border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.facts b{font-family:var(--ozik);font-weight:800;color:var(--ink)}
+.steps::before{background:repeating-linear-gradient(90deg,var(--mist) 0 8px,transparent 8px 14px)}
+#roles .bx,.sec.alt:not(#roles):not(#pricing) .cmp{background:rgba(255,255,255,.04);border-color:#30322A;color:#fff}
+#roles .bx .vis{background:rgba(255,255,255,.06)}
+#roles .bx p{color:var(--fern)}
+.bx.dark{background:var(--sprout);color:var(--onyx);border-color:var(--sprout)}
+.bx.dark p{color:rgba(48,50,42,.8)}
+.bx.dark .who{color:var(--onyx)}
+.bx.dark .vis{background:rgba(48,50,42,.1)}
+.cmp .new{color:var(--moss);font-weight:600}
+.sec.alt:not(#roles):not(#pricing) .cmp .new{color:var(--sprout)}
+.plancard.best,.plancard:hover{border-color:var(--verdant)}
+.final{background:#122314;border:1px solid #30322A;border-radius:24px;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:auto -120px -260px auto;width:460px;height:460px;border-radius:9999px;background:linear-gradient(160deg,#000,#273F2B);opacity:.5;pointer-events:none}
+.final>*{position:relative}
+.final h2{font-family:var(--ozik);font-weight:800;line-height:.95;letter-spacing:-.014em}
+.foot{background:#122314;color:var(--fern);border-top:1px solid #30322A}
+
+/* ---- auth ---- */
+.lside{background:#122314;color:#fff;position:relative;overflow:hidden}
+.lside::after{content:"";position:absolute;inset:auto -140px -200px auto;width:380px;height:380px;border-radius:9999px;background:linear-gradient(160deg,#000,#273F2B);opacity:.55;pointer-events:none}
+.lside>*{position:relative;z-index:1}
+
+/* ---- app chrome ---- */
+.main{padding-block:28px 72px}
+.main h2{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.021em}
+.fq-fab{background:#122314;border:1px solid #30322A}
+.fq-fab .mark{background:var(--sprout)}
+.fq-m.u{background:var(--sprout);color:var(--onyx)}
+.fq-form button{background:var(--sprout);color:var(--onyx)}
+
+@media(max-width:640px){
+  .panel{border-radius:16px}
+  .top,.lnav{width:calc(100% - 16px);border-radius:24px}
+  .btn.lg{padding:12px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero .win,.hero .float{transform:none}}
+
+/* --- fixes: layering, nav wrap, announcement pill --- */
+.hero .in{z-index:1}
+.hero h1{font-size:clamp(38px,5.4vw,64px)}
+.lnav .btn,.top .btn{white-space:nowrap}
+@media(max-width:640px){
+  .eyebrow{border-radius:20px;align-items:flex-start;padding:6px 14px 6px 6px;font-size:13px}
+  .lnav .cta .plansbtn,.lnav .cta .btn.ghost{display:none}
+  .lnav .btn,.top .btn{padding:8px 16px}
+}
+
+/* --- fixes round 2: FAQ padding, sprout highlight card, brand-coloured ticks --- */
+.faq details{padding:0 24px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.faq summary{font-weight:600;font-size:17px;padding:20px 0}
+.faq p{margin:0 0 20px}
+#roles .bx.dark{background:var(--sprout);color:var(--onyx);border-color:var(--sprout)}
+#roles .bx.dark p{color:rgba(48,50,42,.82)}
+#roles .bx.dark .who{color:var(--onyx)}
+#roles .bx.dark .vis{background:rgba(48,50,42,.1)}
+.fg li::before{background:var(--brand-soft);
+  -webkit-mask:none;mask:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4.5 8.2 2.2 2.2 4.8-4.8' fill='none' stroke='%231C7C00' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;background-size:contain}
+
+/* --- fixes round 3: login panel brand, demo banner on-palette --- */
+.lside{--on-brand:#FFFFFF}
+.lside li::before{color:var(--sprout);opacity:1}
+.demobar{background:var(--wash);color:var(--moss);border:1px solid var(--mist);border-radius:24px}
+.demobar .chip{background:#fff;border-color:var(--mist);color:var(--onyx)}
+.demobar .chip[aria-pressed="true"]{background:var(--sprout);color:var(--onyx)}
+.sync.demo{background:rgba(104,239,63,.14);color:var(--sprout)}
 </style>
 </head>
 <body>
