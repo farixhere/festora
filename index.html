@@ -929,8 +929,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    Every change is an "operation" sent to the server and
    replayed in the same order on every device.
    ========================================================= */
-const API = "https://script.google.com/macros/s/AKfycbzp6PIxSwmYEm0R3nVq7qpm2XKb3naXKgx575YFD1ypK_p9oJZO1va51-taqhdLRAzV/exec"; // Festora server address (Apps Script web app URL)
-const HAS_API = /^https:\/\/script\.google(usercontent)?\.com\//.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
+const API = "https://festora-backend-staging-dupekingsam-7855.vercel.app/api/exec"; // Staging replacement API
+const HAS_API = /^https:\/\/(?:script\.google(?:usercontent)?\.com\/|festora-backend-staging-[a-z0-9-]+\.vercel\.app\/api\/exec$)/.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
 const TZ = 5.5 * 3600e3;
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const TEAMCOL = ["#0E9F6E","#E2622B","#6D4ED8","#1F78D1","#D9466F","#B7791F","#0891B2","#65A30D","#7C3AED","#DB2777","#0F766E","#9A3412"];
@@ -1168,7 +1168,7 @@ function bars(obj,color,labels){const mx=Math.max(1,...Object.values(obj));retur
 
 async function api(action,data={}){
   if(!HAS_API)throw new Error("The live server isn't connected yet.");
-  let r;try{r=await fetch(API,{method:"POST",body:JSON.stringify(Object.assign({action,token:TOKEN},data))})}
+  let r;try{r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({action,token:TOKEN},data))})}
   catch(e){const x=new Error("Can't reach the Festora server. Check your internet connection.");x.net=true;throw x}
   let j;try{j=await r.json()}catch(e){const x=new Error("The Festora server sent an unexpected reply. Please try again.");x.net=true;throw x}
   if(j&&j.error){if(j.error==="AUTH"){sessionEnded();throw new Error("Your session has ended. Please log in again.")}if(String(j.error).startsWith("LOCKED:")){const msg=j.error.slice(7);sessionEnded(msg);throw new Error(msg)}throw new Error(j.error)}
