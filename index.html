@@ -13,52 +13,6 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23173C40%22%2F%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23F7F4EC%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23D5AA65%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
-/* =========================================================
-   FESTORA BRAND SYSTEM — premium editorial direction
-   Functional application styles above are intentionally kept.
-   ========================================================= */
-:root{
-  --bg:#F6F5F1;--surface:#FFFFFF;--surface-2:#EFEEE8;--ink:#182A34;--muted:#687A7B;--line:#E0E3DC;
-  --brand:#245B62;--brand-2:#19464D;--brand-soft:#E3EFEC;--on-brand:#FFFFFF;--logo:#173C40;
-  --accent:#D5AA65;--accent-soft:#F6EEDC;--on-accent:#182A34;
-  --shadow:0 2px 5px rgba(24,42,52,.035),0 14px 36px rgba(24,42,52,.07);
-  --shadow-lg:0 8px 18px rgba(24,42,52,.06),0 28px 70px rgba(24,42,52,.13);
-  --display:"Manrope",system-ui,sans-serif;--body:"Manrope",system-ui,sans-serif;
-}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0D171B;--surface:#142328;--surface-2:#1B2D32;--ink:#EAF0EC;--muted:#A5B5AE;--line:#2B4043;
-  --brand:#79B9B0;--brand-2:#5EA198;--brand-soft:#1B3938;--on-brand:#10201F;--logo:#D5E8DF;
-  --accent:#D8B16F;--accent-soft:#3A3020;--on-accent:#F7F2E8;
-  --shadow:0 2px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.2);
-  --shadow-lg:0 10px 24px rgba(0,0,0,.25),0 30px 70px rgba(0,0,0,.3);
-}}
-:root[data-theme="dark"]{
-  --bg:#0D171B;--surface:#142328;--surface-2:#1B2D32;--ink:#EAF0EC;--muted:#A5B5AE;--line:#2B4043;
-  --brand:#79B9B0;--brand-2:#5EA198;--brand-soft:#1B3938;--on-brand:#10201F;--logo:#D5E8DF;
-  --accent:#D8B16F;--accent-soft:#3A3020;--on-accent:#F7F2E8;
-  --shadow:0 2px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.2);
-  --shadow-lg:0 10px 24px rgba(0,0,0,.25),0 30px 70px rgba(0,0,0,.3);
-}
-body{background:var(--bg);letter-spacing:-.008em}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 8% 0%,rgba(213,170,101,.09),transparent 34%),radial-gradient(ellipse at 92% 12%,rgba(36,91,98,.07),transparent 32%)}
-h1,h2,h3,h4{letter-spacing:-.035em}
-.mark{filter:drop-shadow(0 2px 3px rgba(23,60,64,.10))}
-.brandname{font-weight:850;letter-spacing:-.045em}
-.btn{border-radius:11px;font-weight:750;letter-spacing:-.01em;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-.btn:not(.ghost){box-shadow:0 5px 14px rgba(36,91,98,.13)}
-.panel,.lcard,.win,.bx,.feat>div,.price,.faq details,.cmp,.join>div,.final,.sc-board,.sc-card{
-  border-radius:18px;border-color:var(--line);box-shadow:var(--shadow)
-}
-.panel{padding:clamp(16px,2.2vw,24px)}
-.top,.lnav{backdrop-filter:blur(18px) saturate(145%);-webkit-backdrop-filter:blur(18px) saturate(145%)}
-.top{border-bottom-color:color-mix(in srgb,var(--line) 72%,transparent)}
-.sec{padding-block:clamp(48px,7vw,84px)}
-.hero{background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 95%,var(--accent) 5%),var(--surface))}
-.hero h1{letter-spacing:-.06em}
-input,select,textarea{border-radius:10px}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 70%,transparent);outline-offset:2px}
-@media(max-width:640px){.panel{border-radius:15px}.sec{padding-block:44px}}
-
 </style>
 <style>
 /* Layout: product-marketing site (sticky nav with ☰ drop menu, split hero with live product window, bento, pricing, FAQ) leading into a SaaS app (top bar, ☰ drop menu, single centered column). Brand: sky blue on white with the navy Festora monogram as the mark. */
@@ -915,6 +869,53 @@ body.scfs .sc-fs{opacity:0}body.scfs .sc-fs:hover{opacity:.8}
 .sc-up{animation:scUp 1.6s ease}@keyframes scUp{0%,40%{background:rgba(255,215,90,.18)}100%{background:transparent}}
 .sc-row{border-radius:14px}
 @media(min-width:900px){.sc-grid{grid-template-columns:1fr 1fr}.sc-board{grid-column:1/-1}}
+/* =========================================================
+   FESTORA BRAND SYSTEM — premium editorial direction
+   Functional application styles above are intentionally kept.
+   ========================================================= */
+:root{
+  --bg:#F6F5F1;--surface:#FFFFFF;--surface-2:#EFEEE8;--ink:#182A34;--muted:#687A7B;--line:#E0E3DC;
+  --brand:#245B62;--brand-2:#19464D;--brand-soft:#E3EFEC;--on-brand:#FFFFFF;--logo:#173C40;
+  --accent:#D5AA65;--accent-soft:#F6EEDC;--on-accent:#182A34;
+  --shadow:0 2px 5px rgba(24,42,52,.035),0 14px 36px rgba(24,42,52,.07);
+  --shadow-lg:0 8px 18px rgba(24,42,52,.06),0 28px 70px rgba(24,42,52,.13);
+  --display:"Manrope",system-ui,sans-serif;--body:"Manrope",system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D171B;--surface:#142328;--surface-2:#1B2D32;--ink:#EAF0EC;--muted:#A5B5AE;--line:#2B4043;
+  --brand:#79B9B0;--brand-2:#5EA198;--brand-soft:#1B3938;--on-brand:#10201F;--logo:#D5E8DF;
+  --accent:#D8B16F;--accent-soft:#3A3020;--on-accent:#F7F2E8;
+  --shadow:0 2px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.2);
+  --shadow-lg:0 10px 24px rgba(0,0,0,.25),0 30px 70px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#0D171B;--surface:#142328;--surface-2:#1B2D32;--ink:#EAF0EC;--muted:#A5B5AE;--line:#2B4043;
+  --brand:#79B9B0;--brand-2:#5EA198;--brand-soft:#1B3938;--on-brand:#10201F;--logo:#D5E8DF;
+  --accent:#D8B16F;--accent-soft:#3A3020;--on-accent:#F7F2E8;
+  --shadow:0 2px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.2);
+  --shadow-lg:0 10px 24px rgba(0,0,0,.25),0 30px 70px rgba(0,0,0,.3);
+}
+body{background:var(--bg);letter-spacing:-.008em}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 8% 0%,rgba(213,170,101,.09),transparent 34%),radial-gradient(ellipse at 92% 12%,rgba(36,91,98,.07),transparent 32%)}
+h1,h2,h3,h4{letter-spacing:-.035em}
+.mark{filter:drop-shadow(0 2px 3px rgba(23,60,64,.10))}
+.brandname{font-weight:850;letter-spacing:-.045em}
+.btn{border-radius:11px;font-weight:750;letter-spacing:-.01em;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn:not(.ghost){box-shadow:0 5px 14px rgba(36,91,98,.13)}
+.panel,.lcard,.win,.bx,.feat>div,.price,.faq details,.cmp,.join>div,.final,.sc-board,.sc-card{
+  border-radius:18px;border-color:var(--line);box-shadow:var(--shadow)
+}
+.panel{padding:clamp(16px,2.2vw,24px)}
+.top,.lnav{backdrop-filter:blur(18px) saturate(145%);-webkit-backdrop-filter:blur(18px) saturate(145%)}
+.top{border-bottom-color:color-mix(in srgb,var(--line) 72%,transparent)}
+.sec{padding-block:clamp(48px,7vw,84px)}
+.hero{background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 95%,var(--accent) 5%),var(--surface))}
+.hero h1{letter-spacing:-.06em}
+input,select,textarea{border-radius:10px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 70%,transparent);outline-offset:2px}
+@media(max-width:640px){.panel{border-radius:15px}.sec{padding-block:44px}}
+
+
 </style>
 </head>
 <body>
