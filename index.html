@@ -1627,7 +1627,7 @@ function bars(obj,color,labels){const mx=Math.max(1,...Object.values(obj));retur
 
 async function api(action,data={}){
   if(!HAS_API)throw new Error("The live server isn't connected yet.");
-  let r;try{r=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({action,token:TOKEN},data))})}
+  let r;try{r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({action,token:TOKEN},data))})}
   catch(e){const x=new Error("Can't reach the Festora server. Check your internet connection.");x.net=true;throw x}
   let j;try{j=await r.json()}catch(e){const x=new Error("The Festora server sent an unexpected reply. Please try again.");x.net=true;throw x}
   if(j&&j.error){if(j.error==="AUTH"){sessionEnded();throw new Error("Your session has ended. Please log in again.")}if(String(j.error).startsWith("LOCKED:")){const msg=j.error.slice(7);sessionEnded(msg);throw new Error(msg)}throw new Error(j.error)}
