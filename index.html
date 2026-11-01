@@ -1673,8 +1673,8 @@ document.addEventListener("change",e=>{const t=e.target;if(t.id&&t.closest&&t.cl
 document.addEventListener("visibilitychange",()=>{if(!document.hidden){if(VIEW==="app")poll();if(VIEW==="public"||VIEW==="screen")pubPoll()}});
 
 /* ---------- sessions ---------- */
-function saveSession(){store.set("mf_session",{token:TOKEN,user:ME,lfest:LFEST||""})}
-function sessionEnded(msg){if(DEMO)return;stopAll();store.del("mf_session");TOKEN=null;ME=null;D=null;FID=null;VIEW="login";UI.loginMsg=msg||"Your session has ended. Please log in again.";if(LFEST)UI.ltab="user";paint()}
+function saveSession(){store.set("festora_session",{token:TOKEN,user:ME,lfest:LFEST||""})}
+function sessionEnded(msg){if(DEMO)return;stopAll();store.del("festora_session");TOKEN=null;ME=null;D=null;FID=null;VIEW="login";UI.loginMsg=msg||"Your session has ended. Please log in again.";if(LFEST)UI.ltab="user";paint()}
 function stopAll(){clearInterval(SY.timer);SY.pend=[];SY.conf=null;SY.seq=0;setSync("ok")}
 async function doLogin(){const u=document.getElementById("lu").value.trim().toLowerCase(),p=document.getElementById("lp").value;const e=document.getElementById("lerr"),b=document.getElementById("lbtn");
   if(!u||!p){e.innerHTML=`<div class="msg bad">Enter your username and password.</div>`;return}
@@ -1706,12 +1706,12 @@ async function doSignup(){const g=id=>(document.getElementById(id).value||"").tr
   catch(x){b.disabled=false;b.innerHTML=`Create my free account ${ic("arrow")}`;bad(x.message)}}
 async function enter(){VIEW="loading";LOADMSG="Opening your desk…";paint();
   try{const r=await api("fests");ME=r.user;saveSession();FESTLIST=r.fests||[];MYPLAN=r.plan||null;setTimeout(checkReturn,1200);setTimeout(takePick,900);hit("app");
-    const last=store.get("mf_last_"+ME.u)||{};
+    const last=store.get("festora_last_"+ME.u)||{};
     if(isOrg()){if(last.fest&&FESTLIST.some(f=>f.id===last.fest)){await loadFest(last.fest);VIEW="app";PAGE=last.page||"dash";paint();return}FID=null;D=null;VIEW="app";PAGE="fests";paint();return}
     const f=FESTLIST[0];if(!f)throw new Error("The fest for this login was not found.");
     await loadFest(f.id);VIEW="app";PAGE=last.fest===f.id&&last.page?last.page:MENU[ME.role][0][0];paint()}
   catch(x){if(!TOKEN)return;VIEW="login";UI.loginMsg=x.message;paint()}}
-function logout(){if(TOKEN&&!DEMO)api("logout").catch(()=>{});stopAll();store.del("mf_session");TOKEN=null;ME=null;D=null;FID=null;DEMO=false;USERS=[];VIEW=LFEST?"login":"landing";PAGE="";paint();window.scrollTo({top:0})}
+function logout(){if(TOKEN&&!DEMO)api("logout").catch(()=>{});stopAll();store.del("festora_session");TOKEN=null;ME=null;D=null;FID=null;DEMO=false;USERS=[];VIEW=LFEST?"login":"landing";PAGE="";paint();window.scrollTo({top:0})}
 async function openFest(id){VIEW="loading";LOADMSG="Opening the fest…";paint();try{await loadFest(id);VIEW="app";go("dash")}catch(e){VIEW="app";PAGE="fests";paint();toast(e.message)}}
 
 /* =========================================================
@@ -1922,7 +1922,7 @@ const MENU={owner:[["stats","Site stats"],["accounts","Accounts"],["fests","All 
   judge:[["jdash","My programmes"],["help","Help"]]};
 const ROLE={owner:"Master login",org:"Organiser",admin:"Fest admin",team:"Team leader",judge:"Judge"};
 function menu(){const m=MENU[ME.role]||[];return D?m:m.filter(x=>["stats","accounts","fests","coupons","plan","help"].includes(x[0]))}
-function readKey(){return `mf_read_${FID}_${ME&&ME.u}`}
+function readKey(){return `festora_read_${FID}_${ME&&ME.u}`}
 function myNotifs(){if(!ME||!D)return[];return D.notifs.filter(n=>n.to==="all"||n.to===ME.role||(isAdmin()&&n.to==="admin")||(ME.role==="team"&&n.to===ME.team))}
 const lastRead=()=>+(store.get(readKey())||0);
 
@@ -1979,7 +1979,7 @@ function paint(){NEEDPAINT=false;applyTheme(curBrand());document.body.classList.
   if(UI._last===PAGE)window.scrollTo(0,y);
   const en=UI._last!==PAGE;UI._last=PAGE;if(en)countUp();
   renderQRs();const a=PG[PAGE]&&PG[PAGE].after;if(a)a()}
-function go(k){PAGE=k;if(!DEMO&&ME)store.set("mf_last_"+ME.u,{fest:FID,page:k});UI.bell=false;DIRTY={};UI.brd=null;if(k==="settings")draftInit();paint();window.scrollTo({top:0})}
+function go(k){PAGE=k;if(!DEMO&&ME)store.set("festora_last_"+ME.u,{fest:FID,page:k});UI.bell=false;DIRTY={};UI.brd=null;if(k==="settings")draftInit();paint();window.scrollTo({top:0})}
 function exitDemo(){DEMO=false;D=null;ME=null;FID=null;USERS=[];VIEW="landing";paint();window.scrollTo({top:0})}
 const isFree=()=>!DEMO&&PLAN&&PLAN.tier==="free";
 function planMsg(){const t=PLAN&&PLAN.tier;return t==="locked"?"This account has been locked. Please contact the Festora team on Instagram.":t==="expired"?"The Festora plan for this fest has expired. Nothing has been lost.":"The free trial for this fest has ended. Nothing has been lost."}
@@ -2017,7 +2017,7 @@ function LOGIN(){const msg=UI.loginMsg;UI.loginMsg="";const lf=LFEST;const tab=l
    <p class="hint" style="margin:0">${tab==="coupon"?"Have a coupon ID from the Festora team? Enter it here.":lf?"Forgot your password? Ask the convener.":"Forgot your password? Organisers can ask the Festora team; others, the convener."}${lf?"":` Just looking around? <a href="#" onclick="startDemo();return false" style="color:var(--brand);font-weight:600">Try the demo</a>.`}</p>
   </form></div></div>`}
 
-let HITS={};function hit(k){if(!HAS_API||DEMO||HITS[k])return;HITS[k]=1;let v="";try{v=localStorage.getItem("mf_vid")||"";if(!v){v=rid(12);localStorage.setItem("mf_vid",v)}}catch(e){v=rid(12)}api("hit",{k,v,f:k==="public"&&PUBV?PUBV.fest:""}).catch(()=>{})}
+let HITS={};function hit(k){if(!HAS_API||DEMO||HITS[k])return;HITS[k]=1;let v="";try{v=localStorage.getItem("festora_vid")||"";if(!v){v=rid(12);localStorage.setItem("festora_vid",v)}}catch(e){v=rid(12)}api("hit",{k,v,f:k==="public"&&PUBV?PUBV.fest:""}).catch(()=>{})}
 const CONTACT_URL="mailto:farisdomain@gmail.com";
 const PORTFOLIO_URL="https://farixhere.github.io/faris-portfolio/";
 function openContact(){closeDrop&&closeDrop();window.location.href=CONTACT_URL}
@@ -2104,18 +2104,18 @@ function upiBox(P){const k=UI.upk,v=P.plans[k];const url=`upi://pay?pa=${encodeU
    <button class="btn ghost sm" style="margin-top:10px" onclick="UI.upk='';paint()">Choose a different plan</button></div>`}
 async function claimPay(){const u=(document.getElementById("up_utr").value||"").replace(/\s/g,"");if(u.length<10)return toast("Type the transaction ID from your UPI app");const b=document.getElementById("up_b");b.disabled=true;
   try{UI.myplan=await api("claimPay",{plan:UI.upk,utr:u});MYPLAN=UI.myplan.plan;UI.upk="";if(FID){try{const r=await api("pull",{fest:FID,since:SY.seq,plan:true});PLAN=r.plan||PLAN}catch(e){}}toast("Thank you! Your plan is active. We'll confirm the payment soon.");paint()}catch(e){b.disabled=false;toast(e.message)}}
-function pickPlan(k){try{sessionStorage.setItem("mf_pick",k)}catch(e){}
+function pickPlan(k){try{sessionStorage.setItem("festora_pick",k)}catch(e){}
   if(ME&&ME.role==="org"){UI.upk=k;UI.myplan=null;VIEW="app";go("plan");return}
   if(ME){VIEW="app";paint();return}
   VIEW="signup";paint();window.scrollTo({top:0});if(k)toast("Create your account (or log in), then pay on the Plan page.")}
-function takePick(){let k=null;try{k=sessionStorage.getItem("mf_pick");sessionStorage.removeItem("mf_pick")}catch(e){}if(k&&ME&&ME.role==="org"){UI.upk=k;UI.myplan=null;go("plan")}}
+function takePick(){let k=null;try{k=sessionStorage.getItem("festora_pick");sessionStorage.removeItem("festora_pick")}catch(e){}if(k&&ME&&ME.role==="org"){UI.upk=k;UI.myplan=null;go("plan")}}
 async function loadMyPlan(){try{UI.myplan=await api("myPlan");MYPLAN=UI.myplan.plan;softPaint()}catch(e){toast(e.message)}}
 async function redeem(){const c=(document.getElementById("rd_c").value||"").trim().toLowerCase();if(!c)return toast("Type the coupon ID");
   try{UI.myplan=await api("redeem",{code:c});MYPLAN=UI.myplan.plan;PLAN=null;if(FID&&!DEMO){try{const r=await api("pull",{fest:FID,since:SY.seq,plan:true});PLAN=r.plan||PLAN}catch(e){}}toast(`Coupon added. Your plan runs until ${fmtD(MYPLAN.paidUntil)}.`);paint()}catch(e){toast(e.message)}}
-async function buyPlan(k,b){b.disabled=true;b.textContent="Opening payment…";try{const r=await api("buy",{plan:k});try{localStorage.setItem("mf_payref",r.ref)}catch(e){}location.href=r.url}catch(e){b.disabled=false;b.textContent="Try again";toast(e.message)}}
-async function checkReturn(){let ref="";try{ref=new URLSearchParams(location.search).get("paid")||localStorage.getItem("mf_payref")||""}catch(e){}if(!ref||!ME)return;
-  try{const r=await api("checkPay",{ref});if(r.status==="paid"){try{localStorage.removeItem("mf_payref")}catch(e){}UI.myplan=null;const f=await api("fests");MYPLAN=f.plan||MYPLAN;toast("Payment received. Thank you! Your plan is active.");if(FID){const p=await api("pull",{fest:FID,since:SY.seq,plan:true});PLAN=p.plan||PLAN}paint()}
-    else if(["cancelled","expired"].includes(r.status)){try{localStorage.removeItem("mf_payref")}catch(e){}}}catch(e){}
+async function buyPlan(k,b){b.disabled=true;b.textContent="Opening payment…";try{const r=await api("buy",{plan:k});try{localStorage.setItem("festora_payref",r.ref)}catch(e){}location.href=r.url}catch(e){b.disabled=false;b.textContent="Try again";toast(e.message)}}
+async function checkReturn(){let ref="";try{ref=new URLSearchParams(location.search).get("paid")||localStorage.getItem("festora_payref")||""}catch(e){}if(!ref||!ME)return;
+  try{const r=await api("checkPay",{ref});if(r.status==="paid"){try{localStorage.removeItem("festora_payref")}catch(e){}UI.myplan=null;const f=await api("fests");MYPLAN=f.plan||MYPLAN;toast("Payment received. Thank you! Your plan is active.");if(FID){const p=await api("pull",{fest:FID,since:SY.seq,plan:true});PLAN=p.plan||PLAN}paint()}
+    else if(["cancelled","expired"].includes(r.status)){try{localStorage.removeItem("festora_payref")}catch(e){}}}catch(e){}
   try{if(location.search.includes("paid="))history.replaceState(null,"",location.pathname)}catch(e){}}
 
 /* ---------- accounts (master login) ---------- */
@@ -2682,7 +2682,7 @@ function PUBLIC_VIEW(){const pv=PUBV||{};
   <div class="gut wrap" style="padding-block:0 48px">${b}</div>
   <footer class="foot gut"><div class="in wrap" style="justify-content:center"><span style="display:flex;align-items:center;gap:8px">${mark(20)} Powered by Festora</span></div></footer>`}
 function afterPub(){}
-function pubUnlock(){const v=document.getElementById("pc").value.trim();if(!v)return;PUBV.code=v;try{sessionStorage.setItem("mf_code_"+PUBV.fest,v)}catch(e){}PUBV.need=false;paint();pubLoad()}
+function pubUnlock(){const v=document.getElementById("pc").value.trim();if(!v)return;PUBV.code=v;try{sessionStorage.setItem("festora_code_"+PUBV.fest,v)}catch(e){}PUBV.need=false;paint();pubLoad()}
 function verifyCode(){const S=pubS();const v=(document.getElementById("vc").value||"").trim().toUpperCase().replace(/\s/g,"");const m=v.match(/^(\d+)-([A-Z0-9]{1,5})$/);const out=document.getElementById("vres");
   let ok=null;if(m&&S){const c=S.cands.find(x=>x.chest===+m[1]);const p=S.progs.find(x=>x.id.slice(0,5).toUpperCase()===m[2]);if(c&&p&&p.status==="published"){const r=calcS(S,p).find(x=>x.cid===c.id);if(r)ok={c,p,r}}}
   out.innerHTML=ok?`<div class="msg ok">✓ <b>Genuine certificate.</b> ${esc(ok.c.name)} (chest ${ok.c.chest}), ${esc(ok.p.n)}: ${ok.r.rank<=3?ordn(ok.r.rank)+" place, ":""}grade ${ok.r.grade}.</div>`:`<div class="msg bad">No certificate matches this code. Check the letters and numbers and try again.</div>`}
@@ -2720,12 +2720,12 @@ function countUp(){if(RM)return;document.querySelectorAll(".main.enter .stat b")
 
 /* ---------- boot ---------- */
 (function boot(){let q;try{q=new URLSearchParams(location.search)}catch(e){q=new URLSearchParams("")}const f=q.get("f");
-  if(f&&HAS_API){let code="";try{code=sessionStorage.getItem("mf_code_"+f)||""}catch(e){}PUBV={fest:f,tab:q.get("v")?"verify":"results",v:q.get("v")||"",code};VIEW=q.get("screen")?"screen":"public";
+  if(f&&HAS_API){let code="";try{code=sessionStorage.getItem("festora_code_"+f)||""}catch(e){}PUBV={fest:f,tab:q.get("v")?"verify":"results",v:q.get("v")||"",code};VIEW=q.get("screen")?"screen":"public";
     if(VIEW==="screen")document.body.classList.add("screen-mode");paint();pubLoad();return}
   const lf=q.get("login");
-  if(lf&&HAS_API){LFEST=lf;const s=store.get("mf_session");if(s&&s.token&&s.lfest===lf){TOKEN=s.token;ME=s.user;enter();return}
+  if(lf&&HAS_API){LFEST=lf;const s=store.get("festora_session");if(s&&s.token&&s.lfest===lf){TOKEN=s.token;ME=s.user;enter();return}
     VIEW="login";paint();api("festInfo",{fest:lf}).then(r=>{LFESTNAME=r.name;LBRAND={color:/^#[0-9A-Fa-f]{6}$/.test(r.color||"")?r.color:"",logo:safeLogo(r.logo)};if(r.teamlock)UI.loginMsg="Team leader access is closed for now. Judges can still log in.";if(VIEW==="login")paint()}).catch(e=>{UI.loginMsg=e.message;if(VIEW==="login")paint()});return}
-  const s=store.get("mf_session");if(s&&s.token&&HAS_API){TOKEN=s.token;ME=s.user;LFEST=s.lfest||"";enter();return}
+  const s=store.get("festora_session");if(s&&s.token&&HAS_API){TOKEN=s.token;ME=s.user;LFEST=s.lfest||"";enter();return}
   VIEW="landing";paint()})();
 
 /* =========================================================
