@@ -1388,8 +1388,8 @@ td,th{border-bottom-color:var(--line)}
    Every change is an "operation" sent to the server and
    replayed in the same order on every device.
    ========================================================= */
-const API = "https://script.google.com/macros/s/AKfycbzp6PIxSwmYEm0R3nVq7qpm2XKb3naXKgx575YFD1ypK_p9oJZO1va51-taqhdLRAzV/exec"; // Festora server address (Apps Script web app URL)
-const HAS_API = /^https:\/\/script\.google(usercontent)?\.com\//.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
+const API = "https://festora-backend-dupekingsam-7855.vercel.app/api/exec"; // Festora-owned Vercel API backed by Neon PostgreSQL
+const HAS_API = /^https:\/\/festora-backend-[a-z0-9-]+\.vercel\.app\/api\/exec$/.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
 const TZ = 5.5 * 3600e3;
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const TEAMCOL = ["#0E9F6E","#E2622B","#6D4ED8","#1F78D1","#D9466F","#B7791F","#0891B2","#65A30D","#7C3AED","#DB2777","#0F766E","#9A3412"];
@@ -2734,9 +2734,9 @@ function countUp(){if(RM)return;document.querySelectorAll(".main.enter .stat b")
    has an AI key it answers through the server instead.
    ========================================================= */
 const FQKB=[
- {k:["what is Festora","about Festora","what can it do","what can Festora","features","what does","എന്താണ് മെഹ്ഫിൽ","മെഹ്ഫിൽ എന്ത","സൗകര്യങ്ങൾ","എന്തൊക്കെ ചെയ്യ"],
+ {k:["what is Festora","about Festora","what can it do","what can Festora","features","what does","എന്താണ് Festora","Festora എന്ത","സൗകര്യങ്ങൾ","എന്തൊക്കെ ചെയ്യ"],
   en:"Festora is a website for running arts fests and competitions in madrasas, schools and colleges. It covers everything from start to finish:\n• Team leaders register their own students; chest numbers come automatically\n• Programmes and a clash-free schedule\n• Judges enter marks on their phones\n• Ranks, grades and team points are worked out for you\n• Live leaderboard, a public results link and a big-screen view\n• Certificates with a QR check, ID cards and winner posters\n• Locks to control registration and results",
-  ml:"മദ്രസ, സ്കൂൾ, കോളേജ് എന്നിവിടങ്ങളിലെ കലാമേളകളും മത്സരങ്ങളും നടത്താനുള്ള വെബ്സൈറ്റാണ് മെഹ്ഫിൽ. തുടക്കം മുതൽ അവസാനം വരെ എല്ലാം ഇതിലുണ്ട്:\n• ടീം ലീഡർമാർ സ്വന്തം കുട്ടികളെ ചേർക്കും; ചെസ്റ്റ് നമ്പർ തനിയെ വരും\n• പരിപാടികളും ക്ലാഷ് ഇല്ലാത്ത ഷെഡ്യൂളും\n• ജഡ്ജസ് ഫോണിൽ മാർക്ക് ഇടും\n• റാങ്കും ഗ്രേഡും ടീം പോയിന്റും തനിയെ കണക്കാക്കും\n• തത്സമയ പോയിന്റ് നില, പൊതു ഫല ലിങ്ക്, വലിയ സ്ക്രീൻ\n• ക്യൂആർ പരിശോധനയുള്ള സർട്ടിഫിക്കറ്റ്, ഐഡി കാർഡ്, വിജയി പോസ്റ്റർ\n• രജിസ്ട്രേഷനും ഫലവും നിയന്ത്രിക്കാൻ പൂട്ടുകൾ"},
+  ml:"മദ്രസ, സ്കൂൾ, കോളേജ് എന്നിവിടങ്ങളിലെ കലാമേളകളും മത്സരങ്ങളും നടത്താനുള്ള വെബ്സൈറ്റാണ് Festora. തുടക്കം മുതൽ അവസാനം വരെ എല്ലാം ഇതിലുണ്ട്:\n• ടീം ലീഡർമാർ സ്വന്തം കുട്ടികളെ ചേർക്കും; ചെസ്റ്റ് നമ്പർ തനിയെ വരും\n• പരിപാടികളും ക്ലാഷ് ഇല്ലാത്ത ഷെഡ്യൂളും\n• ജഡ്ജസ് ഫോണിൽ മാർക്ക് ഇടും\n• റാങ്കും ഗ്രേഡും ടീം പോയിന്റും തനിയെ കണക്കാക്കും\n• തത്സമയ പോയിന്റ് നില, പൊതു ഫല ലിങ്ക്, വലിയ സ്ക്രീൻ\n• ക്യൂആർ പരിശോധനയുള്ള സർട്ടിഫിക്കറ്റ്, ഐഡി കാർഡ്, വിജയി പോസ്റ്റർ\n• രജിസ്ട്രേഷനും ഫലവും നിയന്ത്രിക്കാൻ പൂട്ടുകൾ"},
  {k:["free","cost","price","pay","money","charge","rupee","paisa","cash","fee","subscription","plan","plans","trial","upgrade","renew","expired","coupon month","സൗജന്യ","പണം","പൈസ","ഫീസ്","രൂപ","ചാർജ്","വില","ഫ്രീ","കാശ്","പ്ലാൻ","കാലാവധി"],
   en:"Every institution can try one fest free: 299 hours (about 12 days) from creating it, up to 40 students, with registration, schedule, judging and live results.\nPaid plans unlock everything (certificates, ID cards, winner posters, the big screen, your own logo and colour, any number of students and fests):\n• 1 month ₹499\n• 3 months ₹1199\n• 6 months ₹2199\n• 1 year ₹4199\nOrganisers: ☰ → 'Plan' to pay online or add a coupon. When a trial or plan ends, the fest becomes read-only; nothing is lost, and choosing a plan opens it again.",
   ml:"ഓരോ സ്ഥാപനത്തിനും ഒരു ഫെസ്റ്റ് സൗജന്യമായി പരീക്ഷിക്കാം: ഫെസ്റ്റ് ഉണ്ടാക്കിയത് മുതൽ 299 മണിക്കൂർ (ഏകദേശം 12 ദിവസം), പരമാവധി 40 കുട്ടികൾ. രജിസ്ട്രേഷൻ, ഷെഡ്യൂൾ, ജഡ്ജിങ്, തത്സമയ ഫലം എന്നിവ ഉണ്ടാകും.\nപണമടച്ചുള്ള പ്ലാനിൽ എല്ലാം ലഭിക്കും (സർട്ടിഫിക്കറ്റ്, ഐഡി കാർഡ്, പോസ്റ്റർ, വലിയ സ്ക്രീൻ, സ്വന്തം ലോഗോയും നിറവും, എത്ര കുട്ടികളും ഫെസ്റ്റുകളും):\n• 1 മാസം ₹499\n• 3 മാസം ₹1199\n• 6 മാസം ₹2199\n• 1 വർഷം ₹4199\nഓർഗനൈസർമാർ ☰ → 'Plan' തുറന്ന് ഓൺലൈനായി പണമടയ്ക്കാം, അല്ലെങ്കിൽ കൂപ്പൺ ചേർക്കാം. കാലാവധി കഴിഞ്ഞാൽ ഫെസ്റ്റ് മാറ്റാൻ കഴിയില്ല, പക്ഷേ ഒന്നും നഷ്ടപ്പെടില്ല; പ്ലാൻ എടുത്താൽ വീണ്ടും തുറക്കും."},
@@ -2748,10 +2748,10 @@ const FQKB=[
   ml:"ഓർഗനൈസർ ആയി ലോഗിൻ ചെയ്ത ശേഷം 'My fests' പേജിൽ ഫെസ്റ്റിന്റെ പേര് എഴുതി 'Create fest' അമർത്തുക. ഒരു അക്കൗണ്ടിൽ എത്ര ഫെസ്റ്റും നടത്താം. ഓരോ ഫെസ്റ്റിനും വേറെ കുട്ടികളും ലോഗിനുകളും ലിങ്കുകളും ഉണ്ടാകും."},
  {k:["coupon","കൂപ്പൺ"],
   en:"Coupons come from the Festora team and give 1, 3, 6 or 12 months of the paid plan. Two ways to use one:\n• Already have an account: ☰ → 'Plan' → 'Have a coupon?', type it and press 'Add coupon'. Your fests and data stay.\n• Or log in with it directly: choose the 'Coupon ID' tab on the login page. The months start from the first login.",
-  ml:"മെഹ്ഫിൽ ടീം നൽകുന്ന കൂപ്പൺ 1, 3, 6 അല്ലെങ്കിൽ 12 മാസത്തെ പ്ലാൻ നൽകും. രണ്ട് വഴിയുണ്ട്:\n• അക്കൗണ്ട് ഉണ്ടെങ്കിൽ: ☰ → 'Plan' → 'Have a coupon?'-ൽ കൂപ്പൺ ടൈപ്പ് ചെയ്ത് 'Add coupon' അമർത്തുക. ഫെസ്റ്റും വിവരങ്ങളും അങ്ങനെ തന്നെ ഉണ്ടാകും.\n• അല്ലെങ്കിൽ ലോഗിൻ പേജിലെ 'Coupon ID' ടാബിൽ നേരിട്ട് കയറാം. ആദ്യം കയറിയ ദിവസം മുതൽ കാലാവധി തുടങ്ങും."},
+  ml:"Festora ടീം നൽകുന്ന കൂപ്പൺ 1, 3, 6 അല്ലെങ്കിൽ 12 മാസത്തെ പ്ലാൻ നൽകും. രണ്ട് വഴിയുണ്ട്:\n• അക്കൗണ്ട് ഉണ്ടെങ്കിൽ: ☰ → 'Plan' → 'Have a coupon?'-ൽ കൂപ്പൺ ടൈപ്പ് ചെയ്ത് 'Add coupon' അമർത്തുക. ഫെസ്റ്റും വിവരങ്ങളും അങ്ങനെ തന്നെ ഉണ്ടാകും.\n• അല്ലെങ്കിൽ ലോഗിൻ പേജിലെ 'Coupon ID' ടാബിൽ നേരിട്ട് കയറാം. ആദ്യം കയറിയ ദിവസം മുതൽ കാലാവധി തുടങ്ങും."},
  {k:["log in","login","sign in","can't enter","cannot enter","not able to login","forgot","ലോഗിൻ","കയറാൻ പറ്റ","മറന്നു","കയറാൻ കഴിയ"],
   en:"Organisers, team leaders and judges all log in on the same page with their username and password. Team leaders and judges get their login from the fest admin, usually through the fest's login link.\nForgot the password? Team leaders and judges: ask your convener, who can make a new one on the 'Logins' page. Organisers: contact the Festora team.",
-  ml:"ഓർഗനൈസർ, ടീം ലീഡർ, ജഡ്ജ് എല്ലാവരും ഒരേ പേജിൽ യൂസർനെയിമും പാസ്‌വേഡും നൽകി ലോഗിൻ ചെയ്യുന്നു. ടീം ലീഡർമാർക്കും ജഡ്ജസിനും ലോഗിൻ നൽകുന്നത് ഫെസ്റ്റ് അഡ്മിനാണ്, സാധാരണ ഫെസ്റ്റിന്റെ ലോഗിൻ ലിങ്ക് വഴി.\nപാസ്‌വേഡ് മറന്നോ? ടീം ലീഡർമാരും ജഡ്ജസും കൺവീനറോട് ചോദിക്കുക; അവർക്ക് 'Logins' പേജിൽ പുതിയത് ഉണ്ടാക്കാം. ഓർഗനൈസർമാർ മെഹ്ഫിൽ ടീമിനെ ബന്ധപ്പെടുക."},
+  ml:"ഓർഗനൈസർ, ടീം ലീഡർ, ജഡ്ജ് എല്ലാവരും ഒരേ പേജിൽ യൂസർനെയിമും പാസ്‌വേഡും നൽകി ലോഗിൻ ചെയ്യുന്നു. ടീം ലീഡർമാർക്കും ജഡ്ജസിനും ലോഗിൻ നൽകുന്നത് ഫെസ്റ്റ് അഡ്മിനാണ്, സാധാരണ ഫെസ്റ്റിന്റെ ലോഗിൻ ലിങ്ക് വഴി.\nപാസ്‌വേഡ് മറന്നോ? ടീം ലീഡർമാരും ജഡ്ജസും കൺവീനറോട് ചോദിക്കുക; അവർക്ക് 'Logins' പേജിൽ പുതിയത് ഉണ്ടാക്കാം. ഓർഗനൈസർമാർ Festora ടീമിനെ ബന്ധപ്പെടുക."},
  {k:["change password","new password","reset password","പാസ്‌വേഡ് മാറ്റ","പാസ്വേഡ് മാറ്റ","password"],
   en:"To change your own password: open the ☰ menu → 'Change password', enter the current password and the new one twice. An admin can make a new password for a team leader or judge on the 'Logins' page.",
   ml:"സ്വന്തം പാസ്‌വേഡ് മാറ്റാൻ: ☰ മെനു → 'Change password' തുറന്ന് ഇപ്പോഴത്തെ പാസ്‌വേഡും പുതിയത് രണ്ടുതവണയും നൽകുക. ടീം ലീഡർക്കോ ജഡ്ജിനോ അഡ്മിന് 'Logins' പേജിൽ പുതിയ പാസ്‌വേഡ് ഉണ്ടാക്കാം."},
@@ -2772,7 +2772,7 @@ const FQKB=[
   ml:"ടീം ലീഡർമാർ: 'Candidates' തുറന്ന് കുട്ടിയുടെ പേര് എഴുതി കാറ്റഗറി തിരഞ്ഞെടുത്ത് 'Register' അമർത്തുക. ചെസ്റ്റ് നമ്പർ തനിയെ വരും. അഡ്മിന് ഏത് ടീമിനും ചേർക്കാം; Excel-ൽ നിന്ന് കോപ്പി ചെയ്ത വരികൾ ഒട്ടിച്ച് ഒരുമിച്ച് (Bulk entry) ചേർക്കാനും കഴിയും."},
  {k:["choose programme","select programme","enroll","programme limit","how many programmes","പരിപാടി തിരഞ്ഞെടു","എത്ര പരിപാടി","പരിപാടിക്ക് ചേർ"],
   en:"On 'Candidates', press 'Programmes' next to a student and tick the programmes. Festora won't allow two programmes at the same time, and it keeps to the limit set in Fest settings (4 per student unless you change it).",
-  ml:"'Candidates' പേജിൽ കുട്ടിയുടെ നേരെയുള്ള 'Programmes' അമർത്തി പരിപാടികൾ ടിക്ക് ചെയ്യുക. ഒരേ സമയത്തുള്ള രണ്ട് പരിപാടികൾ മെഹ്ഫിൽ അനുവദിക്കില്ല. Fest settings-ൽ നിശ്ചയിച്ച പരിധിയും പാലിക്കും (മാറ്റിയില്ലെങ്കിൽ ഒരാൾക്ക് 4)."},
+  ml:"'Candidates' പേജിൽ കുട്ടിയുടെ നേരെയുള്ള 'Programmes' അമർത്തി പരിപാടികൾ ടിക്ക് ചെയ്യുക. ഒരേ സമയത്തുള്ള രണ്ട് പരിപാടികൾ Festora അനുവദിക്കില്ല. Fest settings-ൽ നിശ്ചയിച്ച പരിധിയും പാലിക്കും (മാറ്റിയില്ലെങ്കിൽ ഒരാൾക്ക് 4)."},
  {k:["substitut","replace student","change student","can't take part","absent","പകരം","പങ്കെടുക്കാൻ പറ്റ"],
   en:"If a student can't take part, use the Substitution section on 'Candidates': choose the programme, the student going out and the one coming in (same team and category). It's allowed until judging starts.",
   ml:"ഒരു കുട്ടിക്ക് പങ്കെടുക്കാൻ കഴിയില്ലെങ്കിൽ 'Candidates' പേജിലെ Substitution ഭാഗം ഉപയോഗിക്കുക: പരിപാടി, പോകുന്ന കുട്ടി, പകരം വരുന്ന കുട്ടി (ഒരേ ടീമും കാറ്റഗറിയും) തിരഞ്ഞെടുക്കുക. ജഡ്ജിങ് തുടങ്ങും വരെ ഇത് ചെയ്യാം."},
@@ -2784,7 +2784,7 @@ const FQKB=[
   ml:"☰ → 'Programmes' തുറക്കുക. പേര്, കാറ്റഗറി, സബ് ഫെസ്റ്റ്, സ്റ്റേജ് നൽകുക; വേണമെങ്കിൽ 'Needs a topic' ടിക്ക് ചെയ്യുക; ജഡ്ജസിനെ തിരഞ്ഞെടുത്ത് 'Add programme' അമർത്തുക. അത് ഷെഡ്യൂളിൽ തനിയെ വരും. പിന്നീട് മാറ്റാൻ 'Edit' ഉപയോഗിക്കാം. ഒരു പരിപാടിക്ക് 7 ജഡ്ജസ് വരെ ആകാം."},
  {k:["schedule","time table","timetable","clash","ഷെഡ്യൂൾ","സമയക്രമം","ക്ലാഷ്","ടൈം ടേബിൾ"],
   en:"Open ☰ → 'Schedule' and press 'Build automatically'. Festora places every programme so that no student has two programmes at the same time and no stage is double-booked. You can change any time by hand; clashes show in red, and 'Fix automatically' sorts them out. The public site shows the schedule too.",
-  ml:"☰ → 'Schedule' തുറന്ന് 'Build automatically' അമർത്തുക. ഒരു കുട്ടിക്കും ഒരേ സമയം രണ്ട് പരിപാടി വരാതെയും ഒരു സ്റ്റേജിൽ ഒരേ സമയം രണ്ടെണ്ണം വരാതെയും മെഹ്ഫിൽ എല്ലാം ക്രമീകരിക്കും. ഏത് സമയവും കൈകൊണ്ട് മാറ്റാം; ക്ലാഷ് ചുവപ്പിൽ കാണിക്കും, 'Fix automatically' അത് ശരിയാക്കും. പൊതു സൈറ്റിലും ഷെഡ്യൂൾ കാണാം."},
+  ml:"☰ → 'Schedule' തുറന്ന് 'Build automatically' അമർത്തുക. ഒരു കുട്ടിക്കും ഒരേ സമയം രണ്ട് പരിപാടി വരാതെയും ഒരു സ്റ്റേജിൽ ഒരേ സമയം രണ്ടെണ്ണം വരാതെയും Festora എല്ലാം ക്രമീകരിക്കും. ഏത് സമയവും കൈകൊണ്ട് മാറ്റാം; ക്ലാഷ് ചുവപ്പിൽ കാണിക്കും, 'Fix automatically' അത് ശരിയാക്കും. പൊതു സൈറ്റിലും ഷെഡ്യൂൾ കാണാം."},
  {k:["judge mark","enter mark","give mark","marks","mark sheet","scoring","judging","മാർക്ക്","ജഡ്ജ് എങ്ങനെ","ജഡ്ജിങ്"],
   en:"Judges log in with the username the admin gave them, open 'My programmes', choose a programme, enter a mark from 0 to 100 for each chest number and press 'Submit marks'. Student names are hidden to keep judging fair. Marks can't be changed after submitting; the admin can send the programme back if needed. If the internet drops, the marks are kept and sent when the phone is back online.",
   ml:"അഡ്മിൻ നൽകിയ യൂസർനെയിമിൽ ജഡ്ജ് ലോഗിൻ ചെയ്ത് 'My programmes' തുറന്ന് പരിപാടി തിരഞ്ഞെടുക്കുക. ഓരോ ചെസ്റ്റ് നമ്പറിനും 0 മുതൽ 100 വരെ മാർക്ക് നൽകി 'Submit marks' അമർത്തുക. നീതിക്കായി കുട്ടികളുടെ പേര് ജഡ്ജസിന് കാണില്ല. സമർപ്പിച്ച ശേഷം മാറ്റാനാവില്ല; ആവശ്യമെങ്കിൽ അഡ്മിന് തിരിച്ചയക്കാം. ഇന്റർനെറ്റ് പോയാലും മാർക്ക് ഫോണിൽ സൂക്ഷിച്ച് പിന്നീട് തനിയെ അയക്കും."},
@@ -2847,7 +2847,7 @@ const FQKB=[
   ml:"ഇന്റർനെറ്റ് പോയാലും നിങ്ങൾ ചെയ്തത് ഫോണിൽ സൂക്ഷിക്കും; നെറ്റ് തിരിച്ചുവരുമ്പോൾ തനിയെ അയക്കും. മുകളിലെ ചെറിയ ബട്ടണിൽ 'Saved', 'Saving…' അല്ലെങ്കിൽ 'Offline · will retry' എന്ന് കാണിക്കും. അടയ്ക്കും മുമ്പ് 'Saved' ആകും വരെ കാത്തിരിക്കുക."},
  {k:["phone","mobile","computer","laptop","download app","install","play store","app","ഫോൺ","മൊബൈൽ","ആപ്പ്","കമ്പ്യൂട്ടർ","ഇൻസ്റ്റാൾ"],
   en:"Festora is a website, so there's nothing to download. It works in any browser on phones, tablets and computers. You can add it to your phone's home screen from the browser menu if you like.",
-  ml:"മെഹ്ഫിൽ ഒരു വെബ്സൈറ്റാണ്; ഒന്നും ഡൗൺലോഡ് ചെയ്യേണ്ട. ഫോൺ, ടാബ്‌ലെറ്റ്, കമ്പ്യൂട്ടർ എന്നിവയിലെ ഏത് ബ്രൗസറിലും പ്രവർത്തിക്കും. വേണമെങ്കിൽ ബ്രൗസർ മെനുവിൽ നിന്ന് ഫോണിന്റെ ഹോം സ്ക്രീനിലേക്ക് ചേർക്കാം."},
+  ml:"Festora ഒരു വെബ്സൈറ്റാണ്; ഒന്നും ഡൗൺലോഡ് ചെയ്യേണ്ട. ഫോൺ, ടാബ്‌ലെറ്റ്, കമ്പ്യൂട്ടർ എന്നിവയിലെ ഏത് ബ്രൗസറിലും പ്രവർത്തിക്കും. വേണമെങ്കിൽ ബ്രൗസർ മെനുവിൽ നിന്ന് ഫോണിന്റെ ഹോം സ്ക്രീനിലേക്ക് ചേർക്കാം."},
  {k:["safe","security","privacy","data","stored","secure","hack","സുരക്ഷ","ഡാറ്റ","സ്വകാര്യ"],
   en:"Each fest's data is kept separately, and only people with a login for that fest can change it. Team leaders see only their own team, and judges see chest numbers, not names. Passwords are stored in scrambled form. The public site shows only what you allow on the Locks page.",
   ml:"ഓരോ ഫെസ്റ്റിന്റെയും വിവരങ്ങൾ വേറെവേറെയാണ് സൂക്ഷിക്കുന്നത്; ആ ഫെസ്റ്റിൽ ലോഗിൻ ഉള്ളവർക്ക് മാത്രമേ മാറ്റാൻ കഴിയൂ. ടീം ലീഡർമാർ സ്വന്തം ടീം മാത്രം കാണും; ജഡ്ജസ് ചെസ്റ്റ് നമ്പർ മാത്രം കാണും, പേര് കാണില്ല. പാസ്‌വേഡുകൾ രഹസ്യ രൂപത്തിലാണ് സൂക്ഷിക്കുന്നത്. Locks പേജിൽ അനുവദിക്കുന്നത് മാത്രമേ പൊതു സൈറ്റിൽ കാണൂ."},
@@ -2861,11 +2861,11 @@ const FQKB=[
   en:"The site itself is in English. You can ask me in Malayalam or English and I'll reply in the same language. Names, programme names and news can be typed in any language.",
   ml:"സൈറ്റ് ഇംഗ്ലീഷിലാണ്. എന്നോട് മലയാളത്തിലോ ഇംഗ്ലീഷിലോ ചോദിക്കാം, അതേ ഭാഷയിൽ മറുപടി തരാം. പേരുകൾ, പരിപാടിയുടെ പേര്, വാർത്ത എന്നിവ ഏത് ഭാഷയിലും ടൈപ്പ് ചെയ്യാം."},
  {k:["contact","contact us","support","help me","customer care","call","phone number","email","instagram","ഇൻസ്റ്റഗ്രാം","ബന്ധപ്പെ","സഹായം","സപ്പോർട്ട്","നമ്പർ"],
-  en:"To reach the Festora team, press 'Contact us' at the bottom of the home page (or in the home page ☰ menu). It opens Festora's Instagram page, Festora.fest, where you can send a message.\nTeam leaders and judges can also ask their fest convener.",
-  ml:"മെഹ്ഫിൽ ടീമിനെ ബന്ധപ്പെടാൻ ഹോം പേജിന്റെ താഴെയുള്ള (അല്ലെങ്കിൽ ഹോം പേജിലെ ☰ മെനുവിലുള്ള) 'Contact us' അമർത്തുക. മെഹ്ഫിലിന്റെ ഇൻസ്റ്റഗ്രാം പേജ് (Festora.fest) തുറക്കും, അവിടെ സന്ദേശം അയക്കാം.\nടീം ലീഡർമാർക്കും ജഡ്ജസിനും ഫെസ്റ്റ് കൺവീനറോടും ചോദിക്കാം."},
+  en:"To reach the Festora team, press 'Contact us' at the bottom of the home page (or in the home page ☰ menu). It opens an email to farisdomain@gmail.com. Team leaders and judges can also ask their fest convener.",
+  ml:"Festora ടീമിനെ ബന്ധപ്പെടാൻ ഹോം പേജിന്റെ താഴെയുള്ള (അല്ലെങ്കിൽ ഹോം പേജിലെ ☰ മെനുവിലുള്ള) 'Contact us' അമർത്തുക. മെഹ്ഫിലിന്റെ ഇൻസ്റ്റഗ്രാം പേജ് (Festora.fest) തുറക്കും, അവിടെ സന്ദേശം അയക്കാം.\nടീം ലീഡർമാർക്കും ജഡ്ജസിനും ഫെസ്റ്റ് കൺവീനറോടും ചോദിക്കാം."},
  {k:["who made","who built","who created","developer","owner","creator","company","made by","ആര് ഉണ്ടാക്കി","ആരാണ് ഉണ്ടാക്കിയ","ഉടമ","ആരുടേതാണ്"],
   en:"Festora is built and run by the Festora team.",
-  ml:"മെഹ്ഫിൽ ടീമാണ് മെഹ്ഫിൽ നിർമിച്ചതും നടത്തുന്നതും."},
+  ml:"Festora ടീമാണ് Festora നിർമിച്ചതും നടത്തുന്നതും."},
  {k:["group","team event","duff","oppana","group item","ഗ്രൂപ്പ്","ദഫ്","ഒപ്പന"],
   en:"For group items (like Duff), register the group as one candidate, for example 'Duff Team A', in the right category, and add it to the programme. Judges then mark the group by its chest number.",
   ml:"ഗ്രൂപ്പ് ഇനങ്ങൾക്ക് (ദഫ് പോലുള്ളവ) ഗ്രൂപ്പിനെ ഒരു കാൻഡിഡേറ്റായി ചേർക്കുക, ഉദാഹരണം 'Duff Team A', ശരിയായ കാറ്റഗറിയിൽ. എന്നിട്ട് അതിനെ പരിപാടിയിൽ ചേർക്കുക. ജഡ്ജസ് ആ ചെസ്റ്റ് നമ്പറിന് മാർക്ക് ഇടും."},
@@ -2874,12 +2874,12 @@ const FQKB=[
   ml:"ടീമുകൾക്കും കുട്ടികൾക്കും പരിപാടികൾക്കും നിശ്ചിത പരിധിയില്ല. ഒരു പരിപാടിക്ക് 7 ജഡ്ജസ് വരെ, ഫെസ്റ്റ് 7 ദിവസം വരെ. ഒരു കുട്ടിക്ക് എത്ര പരിപാടി എന്നത് നിങ്ങൾ തീരുമാനിക്കാം (1 മുതൽ 20 വരെ)."},
  {k:["who are you","your name","festiq","what are you","നിന്റെ പേര്","നീ ആരാ","നിങ്ങൾ ആരാ"],
   en:"I'm Festora Guide, Festora's assistant. Ask me anything about using Festora: setting up a fest, registration, judging, results, certificates or locks.",
-  ml:"ഞാൻ Festora Guide, മെഹ്ഫിലിന്റെ സഹായി. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കാം: ഫെസ്റ്റ് ഒരുക്കൽ, രജിസ്ട്രേഷൻ, ജഡ്ജിങ്, ഫലം, സർട്ടിഫിക്കറ്റ്, പൂട്ടുകൾ."}
+  ml:"ഞാൻ Festora Guide, മെഹ്ഫിലിന്റെ സഹായി. Festora ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കാം: ഫെസ്റ്റ് ഒരുക്കൽ, രജിസ്ട്രേഷൻ, ജഡ്ജിങ്, ഫലം, സർട്ടിഫിക്കറ്റ്, പൂട്ടുകൾ."}
 ];
 const FQ={open:false,msgs:[],busy:false,ai:null,cid:""};
 const fqMl=s=>/[ഀ-ൿ]/.test(s);
 function fqLocal(q){const n=" "+String(q).toLowerCase().replace(/[?!.,;:()"'’`]/g," ").replace(/\s+/g," ")+" ";const ml=fqMl(q);
-  if(/^\s*(hi|hello|hey|hai|helo|salam|assalam|as-salam|good (morning|evening|afternoon))\b/.test(n)||/(ഹലോ|ഹായ്|സലാം|അസ്സലാമു)/.test(n))return ml?"നമസ്കാരം! ഞാൻ Festora Guide. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കൂ.":"Hello! I'm Festora Guide. Ask me anything about using Festora.";
+  if(/^\s*(hi|hello|hey|hai|helo|salam|assalam|as-salam|good (morning|evening|afternoon))\b/.test(n)||/(ഹലോ|ഹായ്|സലാം|അസ്സലാമു)/.test(n))return ml?"നമസ്കാരം! ഞാൻ Festora Guide. Festora ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കൂ.":"Hello! I'm Festora Guide. Ask me anything about using Festora.";
   if(/(thank|thanks|thx|nanni|jazak)/.test(n)||/(നന്ദി|താങ്ക്സ്)/.test(n))return ml?"സന്തോഷം! വേറെ എന്തെങ്കിലും അറിയണോ?":"You're welcome! Anything else?";
   let best=null,bs=0;FQKB.forEach(e=>{let sc=0;e.k.forEach(k=>{if(n.includes(k.toLowerCase()))sc+=k.length});if(sc>bs){bs=sc;best=e}});
   if(best&&bs>=3)return ml?best.ml:best.en;
