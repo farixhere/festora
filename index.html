@@ -9,15 +9,15 @@
 <meta property="og:title" content="Festora">
 <meta property="og:description" content="Event and fest management, all in one place.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23173C40%22%2F%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23F7F4EC%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23D5AA65%22%2F%3E%3C%2Fsvg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23173C40%22%2F%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23F7F4EC%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23D5AA65%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
 </style>
 <style>
 /* Layout: product-marketing site (sticky nav with ☰ drop menu, split hero with live product window, bento, pricing, FAQ) leading into a SaaS app (top bar, ☰ drop menu, single centered column). Brand: sky blue on white with the navy Festora monogram as the mark. */
 :root{
-  --logo-url:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M16%2012h69v19H37v13h38v18H37v27H16z%22%20fill%3D%22%23000%22%2F%3E%3Cpath%20d%3D%22M37%2044h38v18H37z%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  --logo-url:url("/festora-symbol.svg");
   --bg:#F4F8FD; --surface:#FFFFFF; --surface-2:#EDF4FC; --ink:#0F2340; --muted:#5B6E88; --line:#DCE7F4;
   --brand:#1F78D1; --brand-2:#1764B3; --brand-soft:#E5F1FD; --on-brand:#FFFFFF; --logo:#10295A;
   --accent:#7CC4FA; --accent-soft:#E3F3FF; --on-accent:#0F2340;
@@ -723,7 +723,7 @@ body.screen-mode .aurora{display:none}
 .swatch.custom input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;border:0;padding:0}
 .mini-f{flex:1 1 120px;max-width:180px}
 
-/* ===== FESTIQ assistant ===== */
+/* ===== Festora Guide assistant ===== */
 .fq-fab{position:fixed;right:max(30px,env(safe-area-inset-right,0px));bottom:calc(34px + env(safe-area-inset-bottom,0px));z-index:60;width:62px;height:62px;border-radius:50%;border:1px solid rgba(255,255,255,.55);background:color-mix(in srgb,var(--surface) 55%,transparent);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);box-shadow:0 10px 30px rgba(15,35,64,.22);display:grid;place-items:center;cursor:pointer;transition:transform .2s;padding:0}
 .fq-fab:hover{transform:scale(1.06)}.fq-fab:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .fq-fab .mark{width:32px;height:32px;background:var(--brand)}
@@ -1351,6 +1351,31 @@ td,th{border-bottom-color:var(--line)}
   .lp-base{padding-bottom:96px}
 }
 </style>
+<style>
+/* Festora brand symbol + organiser story section */
+.lp-reviews{background:#191717;color:#F8F2E9;position:relative;overflow:hidden}
+.lp-reviews:before{content:"";position:absolute;width:520px;height:520px;right:-220px;top:-250px;border-radius:50%;background:radial-gradient(circle,rgba(244,81,58,.28),transparent 68%);pointer-events:none}
+.lp-review-head{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:end;margin-bottom:34px;position:relative}
+.lp-review-head .k,.lp-review-tag{font-size:11px;letter-spacing:.16em;font-weight:800;color:#FF9A65}
+.lp-review-head h2{font-size:clamp(30px,4vw,48px);max-width:680px;margin-top:12px}
+.lp-review-head p{color:#C9BDB5;margin:0;max-width:470px}
+.lp-review-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px;position:relative}
+.lp-review-card{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.055);border-radius:22px;padding:26px;min-height:250px;display:flex;flex-direction:column;align-items:flex-start}
+.lp-review-feature{background:#F8F2E9;color:#191717;border-color:#F8F2E9}
+.lp-quote-mark{font-family:Georgia,serif;font-size:64px;line-height:.7;color:#F4513A}
+.lp-review-feature h3{font-size:clamp(22px,2.3vw,30px);line-height:1.18;margin:18px 0 10px}
+.lp-review-card h3{font-size:20px;line-height:1.25;margin:16px 0 8px}
+.lp-review-card p{font-size:14px;color:#C9BDB5;margin:0 0 20px}
+.lp-review-feature p{color:#716760}
+.lp-review-link{margin-top:auto;color:#C2381F;font-weight:800;text-decoration:none}
+.lp-review-link span{margin-left:8px}
+.lp-review-icon{width:38px;height:38px;border-radius:12px;background:#F4513A;color:white;display:grid;place-items:center;font-weight:800}
+.lp-coming{margin-top:auto;font-size:10px;letter-spacing:.12em;color:#FFB58E;font-weight:800}
+.fq-fab{background:#FFF5EC!important;border:2px solid #FFB38F!important;box-shadow:0 12px 34px rgba(25,23,23,.25)!important}
+.fq-fab svg{display:block;filter:drop-shadow(0 3px 3px rgba(25,23,23,.12))}
+.fq-av{width:38px;height:38px;border-radius:13px;background:#FFF0E5;display:grid;place-items:center;flex:0 0 auto}
+@media(max-width:760px){.lp-review-head{grid-template-columns:1fr;gap:16px}.lp-review-grid{grid-template-columns:1fr}.lp-review-card{min-height:210px}}
+</style>
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1363,8 +1388,8 @@ td,th{border-bottom-color:var(--line)}
    Every change is an "operation" sent to the server and
    replayed in the same order on every device.
    ========================================================= */
-const API = "https://festora-backend-staging-dupekingsam-7855.vercel.app/api/exec"; // Staging replacement API
-const HAS_API = /^https:\/\/(?:script\.google(?:usercontent)?\.com\/|festora-backend-staging-[a-z0-9-]+\.vercel\.app\/api\/exec$)/.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
+const API = "https://script.google.com/macros/s/AKfycbzp6PIxSwmYEm0R3nVq7qpm2XKb3naXKgx575YFD1ypK_p9oJZO1va51-taqhdLRAzV/exec"; // Festora server address (Apps Script web app URL)
+const HAS_API = /^https:\/\/script\.google(usercontent)?\.com\//.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
 const TZ = 5.5 * 3600e3;
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const TEAMCOL = ["#0E9F6E","#E2622B","#6D4ED8","#1F78D1","#D9466F","#B7791F","#0891B2","#65A30D","#7C3AED","#DB2777","#0F766E","#9A3412"];
@@ -1809,30 +1834,21 @@ function LANDING(){const nw=MOCKNOW[MOCK.i%3],ev=MOCKEV[MOCK.i%4];
    <li><span class="lp-num">03</span><h3>Celebrate</h3><p>Publish results and share the achievements of your participants.</p><small>Verify the marks, publish in one click and print certificates with QR codes.</small></li>
   </ol>
  </div></section>
- <section class="sec lp-show" style="margin-top:clamp(24px,3vw,40px)"><div class="gut wrap">
-  <div class="sec-h c"><div class="k">The product</div><h2>See what fest day feels like on Festora</h2><p>An illustrative preview based on the real app. It updates by itself, like a live fest. Want to click around for real? <button class="lp-link" onclick="startDemo()">Open the demo</button></p></div>
-  <div class="lp-stage">
-   <div class="lp-card lc1" aria-hidden="true"><h5>Candidates</h5><div class="lp-row"><span class="lp-chest a">101</span><b>Yaseen A</b><span class="pill ok">Safa</span></div><div class="lp-row" style="margin-top:8px"><span class="lp-chest">103</span><b>Irfan P</b><span class="pill">Marwa</span></div><div class="lp-row" style="margin-top:8px"><span class="lp-chest">204</span><b>Liya M</b><span class="pill wait">Hira</span></div></div>
-   <div class="lp-card lc2" aria-hidden="true"><h5>Schedule</h5><div class="lp-slot"><time>9:00</time>Qira'ath</div><div class="lp-slot"><time>9:30</time>Mappilappattu</div><div class="lp-slot"><time>10:00</time>Hifz</div></div>
-   <div class="shot" aria-label="A preview of the app">
-   <div class="win">
-    <div class="bar">${mark(22)}<span>Festora Arts Fest 2026</span><span class="live">LIVE</span></div>
-    <div class="body">
-     <div class="mini"><div class="k"><span>LEADERBOARD</span><span>${ic("results")}</span></div><div class="lb" id="mk_lb">${mockBoard()}</div></div>
-     <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-      <div class="mini nowc" id="mk_now">${nowHTML(nw)}</div>
-      <div class="mini"><div class="k"><span>RESULTS IN</span><b id="mk_done" style="color:var(--ink)">${MOCK.done}/32</b></div><div class="prog"><i id="mk_bar" style="width:${MOCK.done/32*100}%"></i></div></div>
-     </div>
-    </div>
-    <div class="body" style="padding-top:0;grid-template-columns:1fr">
-     <div class="mini" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:0"><div class="k"><span>JUDGING · CHEST NUMBERS ONLY</span></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">${[["201",86],["204",91],["209",78],["212","…"]].map(([c,m])=>`<span class="pill" style="background:var(--surface-2);color:var(--ink)"><span class="chest" style="padding:0 5px">${c}</span>${m}</span>`).join("")}</div></div>
-      <span class="pill ok">0 clashes</span></div>
-    </div>
-   </div>
-   <div class="float f1" id="mk_ev">${evHTML(ev)}</div>
-   <div class="float f2"><span class="ic" style="background:var(--brand-soft);color:var(--brand)">${ic("qr")}</span><span><b>214-K3XQ9</b><br><small style="color:var(--muted)">Certificate verified ✓</small></span></div>
+ <section class="sec lp-reviews" id="stories"><div class="gut wrap">
+  <div class="lp-review-head">
+   <div><div class="k">ORGANISER STORIES</div><h2>Every great fest has a story worth sharing.</h2></div>
+   <p>We want this space to feature real experiences from the people who organise, lead and judge events with Festora. No made-up quotes—just honest stories from the people behind the celebrations.</p>
   </div>
+  <div class="lp-review-grid">
+   <article class="lp-review-card lp-review-feature">
+    <span class="lp-quote-mark" aria-hidden="true">“</span>
+    <div class="lp-review-tag">YOUR STORY COULD BE HERE</div>
+    <h3>Help other organisers discover a better way to run their fest.</h3>
+    <p>Tell us what worked, what became easier, and what you would tell another organiser about Festora.</p>
+    <a class="lp-review-link" href="mailto:farisdomain@gmail.com?subject=My%20Festora%20story">Share your experience <span aria-hidden="true">↗</span></a>
+   </article>
+   <article class="lp-review-card"><div class="lp-review-icon">01</div><div class="lp-review-tag">ORGANISERS</div><h3>From planning to fest day</h3><p>Real organiser feedback will appear here once shared and approved.</p><span class="lp-coming">ORGANISER REVIEW · COMING SOON</span></article>
+   <article class="lp-review-card"><div class="lp-review-icon">02</div><div class="lp-review-tag">PARTICIPANTS & TEAMS</div><h3>A smoother experience for everyone</h3><p>We’re making room for genuine stories from team leaders and participants too.</p><span class="lp-coming">COMMUNITY STORY · COMING SOON</span></article>
   </div>
  </div></section>
  <section class="sec" id="events"><div class="gut wrap">
@@ -1876,7 +1892,7 @@ function LANDING(){const nw=MOCKNOW[MOCK.i%3],ev=MOCKEV[MOCK.i%4];
    <div>${BRAND()}<p>Event and fest management on one desk, from registrations to certificates.</p></div>
    <div><h6>Product</h6><a href="#platform">Platform</a><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
    <div><h6>Get started</h6><button onclick="${su}">Create an event</button><button onclick="${li}">Sign in</button><button onclick="startDemo()">Try the demo</button></div>
-   <div><h6>Contact</h6><a href="${CONTACT_URL}" target="_blank" rel="noopener">Instagram</a><button onclick="openContact()">Contact us</button><a href="#faq">FAQ</a></div>
+   <div><h6>Contact</h6><a href="mailto:farisdomain@gmail.com">Email us</a><a href="https://farixhere.github.io/faris-portfolio/" target="_blank" rel="noopener">Portfolio</a><a href="#faq">FAQ</a></div>
   </div></div>
   <div class="lp-word" aria-hidden="true">Festora</div>
   <div class="gut wrap"><div class="lp-base"><span>© ${new Date().getFullYear()} Festora</span><span>Fest management on one desk</span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Back to top ↑</a></div></div>
@@ -2002,8 +2018,9 @@ function LOGIN(){const msg=UI.loginMsg;UI.loginMsg="";const lf=LFEST;const tab=l
   </form></div></div>`}
 
 let HITS={};function hit(k){if(!HAS_API||DEMO||HITS[k])return;HITS[k]=1;let v="";try{v=localStorage.getItem("mf_vid")||"";if(!v){v=rid(12);localStorage.setItem("mf_vid",v)}}catch(e){v=rid(12)}api("hit",{k,v,f:k==="public"&&PUBV?PUBV.fest:""}).catch(()=>{})}
-const CONTACT_URL="https://www.instagram.com/mehfil.fest";
-function openContact(){closeDrop&&closeDrop();window.open(CONTACT_URL,"_blank","noopener")}
+const CONTACT_URL="mailto:farisdomain@gmail.com";
+const PORTFOLIO_URL="https://farixhere.github.io/faris-portfolio/";
+function openContact(){closeDrop&&closeDrop();window.location.href=CONTACT_URL}
 const PG_STATS=()=>{const S=UI.stats;if(!S){loadStats();return `${head("Site stats","Visitors, accounts and users, all in one place.")}<div class="panel">Loading…</div>`}
   const v=S.visits,num=x=>(x||0).toLocaleString("en-IN"),tile=(b,l)=>`<div class="stat"><b>${num(b)}</b><span>${l}</span></div>`;
   const days=v.days.slice(-14),mx=Math.max(1,...days.map(d=>d.home+d.pub));
@@ -2712,7 +2729,7 @@ function countUp(){if(RM)return;document.querySelectorAll(".main.enter .stat b")
   VIEW="landing";paint()})();
 
 /* =========================================================
-   FESTIQ · Festora's assistant
+   Festora Guide · Festora's assistant
    Answers from its own knowledge right away; when the server
    has an AI key it answers through the server instead.
    ========================================================= */
@@ -2856,13 +2873,13 @@ const FQKB=[
   en:"There's no fixed limit on teams, students or programmes. A programme can have up to 7 judges, a fest can run up to 7 days, and you choose how many programmes each student may take (1 to 20).",
   ml:"ടീമുകൾക്കും കുട്ടികൾക്കും പരിപാടികൾക്കും നിശ്ചിത പരിധിയില്ല. ഒരു പരിപാടിക്ക് 7 ജഡ്ജസ് വരെ, ഫെസ്റ്റ് 7 ദിവസം വരെ. ഒരു കുട്ടിക്ക് എത്ര പരിപാടി എന്നത് നിങ്ങൾ തീരുമാനിക്കാം (1 മുതൽ 20 വരെ)."},
  {k:["who are you","your name","festiq","what are you","നിന്റെ പേര്","നീ ആരാ","നിങ്ങൾ ആരാ"],
-  en:"I'm FESTIQ, Festora's assistant. Ask me anything about using Festora: setting up a fest, registration, judging, results, certificates or locks.",
-  ml:"ഞാൻ FESTIQ, മെഹ്ഫിലിന്റെ സഹായി. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കാം: ഫെസ്റ്റ് ഒരുക്കൽ, രജിസ്ട്രേഷൻ, ജഡ്ജിങ്, ഫലം, സർട്ടിഫിക്കറ്റ്, പൂട്ടുകൾ."}
+  en:"I'm Festora Guide, Festora's assistant. Ask me anything about using Festora: setting up a fest, registration, judging, results, certificates or locks.",
+  ml:"ഞാൻ Festora Guide, മെഹ്ഫിലിന്റെ സഹായി. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കാം: ഫെസ്റ്റ് ഒരുക്കൽ, രജിസ്ട്രേഷൻ, ജഡ്ജിങ്, ഫലം, സർട്ടിഫിക്കറ്റ്, പൂട്ടുകൾ."}
 ];
 const FQ={open:false,msgs:[],busy:false,ai:null,cid:""};
 const fqMl=s=>/[ഀ-ൿ]/.test(s);
 function fqLocal(q){const n=" "+String(q).toLowerCase().replace(/[?!.,;:()"'’`]/g," ").replace(/\s+/g," ")+" ";const ml=fqMl(q);
-  if(/^\s*(hi|hello|hey|hai|helo|salam|assalam|as-salam|good (morning|evening|afternoon))\b/.test(n)||/(ഹലോ|ഹായ്|സലാം|അസ്സലാമു)/.test(n))return ml?"നമസ്കാരം! ഞാൻ FESTIQ. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കൂ.":"Hello! I'm FESTIQ. Ask me anything about using Festora.";
+  if(/^\s*(hi|hello|hey|hai|helo|salam|assalam|as-salam|good (morning|evening|afternoon))\b/.test(n)||/(ഹലോ|ഹായ്|സലാം|അസ്സലാമു)/.test(n))return ml?"നമസ്കാരം! ഞാൻ Festora Guide. മെഹ്ഫിൽ ഉപയോഗിക്കുന്നതിനെക്കുറിച്ച് എന്തും ചോദിക്കൂ.":"Hello! I'm Festora Guide. Ask me anything about using Festora.";
   if(/(thank|thanks|thx|nanni|jazak)/.test(n)||/(നന്ദി|താങ്ക്സ്)/.test(n))return ml?"സന്തോഷം! വേറെ എന്തെങ്കിലും അറിയണോ?":"You're welcome! Anything else?";
   let best=null,bs=0;FQKB.forEach(e=>{let sc=0;e.k.forEach(k=>{if(n.includes(k.toLowerCase()))sc+=k.length});if(sc>bs){bs=sc;best=e}});
   if(best&&bs>=3)return ml?best.ml:best.en;
@@ -2874,7 +2891,7 @@ function fqChips(){const r=ME&&ME.role;if(VIEW==="public")return ["How do I chec
   return ["How much does Festora cost?","How do I start?","What can Festora do?","എങ്ങനെ തുടങ്ങാം?"]}
 const fqFmt=t=>esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
 function fqRender(){const box=document.getElementById("fqMsgs");if(!box)return;
-  box.innerHTML=FQ.msgs.map(m=>`<div class="fq-m ${m.r}">${fqFmt(m.t)}</div>`).join("")+(FQ.busy?`<div class="fq-m a"><span class="fq-typing" aria-label="FESTIQ is typing"><i></i><i></i><i></i></span></div>`:"");
+  box.innerHTML=FQ.msgs.map(m=>`<div class="fq-m ${m.r}">${fqFmt(m.t)}</div>`).join("")+(FQ.busy?`<div class="fq-m a"><span class="fq-typing" aria-label="Festora Guide is typing"><i></i><i></i><i></i></span></div>`:"");
   box.scrollTop=box.scrollHeight;const ch=document.getElementById("fqChips");if(ch)ch.innerHTML=fqChips().map(c=>`<button type="button">${esc(c)}</button>`).join("");
   if(ch)[...ch.children].forEach(b=>b.onclick=()=>fqAsk(b.textContent))}
 async function fqAsk(q){q=String(q||"").trim().slice(0,500);if(!q||FQ.busy)return;FQ.msgs.push({r:"u",t:q});FQ.busy=true;fqRender();
@@ -2884,13 +2901,24 @@ async function fqAsk(q){q=String(q||"").trim().slice(0,500);if(!q||FQ.busy)retur
   if(!ans){await new Promise(r=>setTimeout(r,350));ans=fqLocal(q)}
   FQ.busy=false;FQ.msgs.push({r:"a",t:ans});fqRender()}
 function fqToggle(open){FQ.open=open==null?!FQ.open:open;const p=document.getElementById("fqPanel"),f=document.getElementById("fqFab");if(!p)return;p.hidden=!FQ.open;f.classList.toggle("open",FQ.open);f.setAttribute("aria-expanded",String(FQ.open));
-  if(FQ.open){if(!FQ.msgs.length)FQ.msgs.push({r:"a",t:"Hi! I'm FESTIQ, Festora's assistant. Ask me anything about running your fest, in English or Malayalam."});fqRender();setTimeout(()=>{const i=document.getElementById("fqIn");if(i)i.focus()},60)}}
+  if(FQ.open){if(!FQ.msgs.length)FQ.msgs.push({r:"a",t:"Hi! I'm Festora Guide, your event companion. Ask me anything about running your fest, in English or Malayalam."});fqRender();setTimeout(()=>{const i=document.getElementById("fqIn");if(i)i.focus()},60)}}
+const fqBot=(size=32)=>`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 64 64" role="img" aria-label="Smiling Festora helper robot">
+ <defs><linearGradient id="fqShell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF9F1"/><stop offset="1" stop-color="#FFD9C8"/></linearGradient><linearGradient id="fqTrim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFB52E"/><stop offset="1" stop-color="#FF4B32"/></linearGradient></defs>
+ <path d="M32 5v7" stroke="#191717" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="5" r="4" fill="#FF653E"/>
+ <rect x="8" y="14" width="48" height="40" rx="15" fill="url(#fqShell)" stroke="#F4513A" stroke-width="2.5"/>
+ <rect x="13" y="19" width="38" height="29" rx="11" fill="#241B1B"/>
+ <path d="M22 32q4-8 8 0M34 32q4-8 8 0" fill="none" stroke="#FFF4DF" stroke-width="3.2" stroke-linecap="round"/>
+ <path d="M27 39q5 5 10 0" fill="none" stroke="#FF8066" stroke-width="3" stroke-linecap="round"/>
+ <path d="M8 29H5m54 0h-3" stroke="url(#fqTrim)" stroke-width="4" stroke-linecap="round"/>
+ <path d="M23 55v4m18-4v4" stroke="#191717" stroke-width="3" stroke-linecap="round"/>
+ <path d="M26 58h12" stroke="#FF653E" stroke-width="4" stroke-linecap="round"/>
+ </svg>`
 function mountFQ(){if(document.getElementById("fqFab"))return;try{FQ.cid=localStorage.getItem("fq_cid")||"";if(!FQ.cid){FQ.cid=rid(12);localStorage.setItem("fq_cid",FQ.cid)}}catch(e){FQ.cid=rid(12)}
-  document.body.insertAdjacentHTML("beforeend",`<button type="button" class="fq-fab" id="fqFab" aria-label="Ask FESTIQ, Festora's assistant" aria-controls="fqPanel" aria-expanded="false">${mark(32)}<span class="fq-dot" aria-hidden="true"></span></button>
-  <section class="fq-panel" id="fqPanel" role="dialog" aria-label="FESTIQ assistant" hidden>
-   <div class="fq-head"><span class="fq-av">${mark(24)}</span><div><b>FESTIQ</b><small>Festora assistant · online</small></div><button type="button" class="fq-x" id="fqX" aria-label="Close">✕</button></div>
+  document.body.insertAdjacentHTML("beforeend",`<button type="button" class="fq-fab" id="fqFab" aria-label="Ask Festora Guide, Festora's assistant" aria-controls="fqPanel" aria-expanded="false">${fqBot(38)}<span class="fq-dot" aria-hidden="true"></span></button>
+  <section class="fq-panel" id="fqPanel" role="dialog" aria-label="Festora Guide assistant" hidden>
+   <div class="fq-head"><span class="fq-av">${fqBot(28)}</span><div><b>Festora Guide</b><small>Your event companion</small></div><button type="button" class="fq-x" id="fqX" aria-label="Close">✕</button></div>
    <div class="fq-msgs" id="fqMsgs" aria-live="polite"></div><div class="fq-chips" id="fqChips"></div>
-   <form class="fq-form" id="fqForm"><label for="fqIn" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Message</label><input id="fqIn" autocomplete="off" maxlength="500" placeholder="Ask FESTIQ anything…"><button type="submit">Send</button></form>
+   <form class="fq-form" id="fqForm"><label for="fqIn" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Message</label><input id="fqIn" autocomplete="off" maxlength="500" placeholder="Ask your Festora Guide…"><button type="submit">Send</button></form>
   </section>`);
   document.getElementById("fqFab").onclick=()=>fqToggle();document.getElementById("fqX").onclick=()=>fqToggle(false);
   document.getElementById("fqForm").onsubmit=e=>{e.preventDefault();const i=document.getElementById("fqIn");const v=i.value;i.value="";fqAsk(v)};
