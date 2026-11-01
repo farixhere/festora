@@ -1699,7 +1699,7 @@ async function doSignup(){const g=id=>(document.getElementById(id).value||"").tr
   if(!HAS_API)return bad("The live site isn't connected yet. You can explore the demo instead.");
   if(UI.otpFor!==d.email){UI.otpFor="";b.disabled=true;b.innerHTML="Sending a code…";
     try{const o=await api("sendOtp",{email:d.email});if(!o.off){UI.otpFor=d.email;b.disabled=false;b.innerHTML="Verify and create account";document.getElementById("otpbox").hidden=false;e.innerHTML=`<div class="msg ok">We sent a 6-digit code to ${esc(d.email)}. Check your inbox (and spam), then type it below.</div>`;document.getElementById("su_o").focus();return}}
-    catch(x){if(!/Unknown action/.test(x.message)){b.disabled=false;b.innerHTML="Create my free account";return bad(x.message)}}}
+    catch(x){if(!/Unknown action/.test(x.message)){UI.otpFor=d.email;document.getElementById("otpbox").hidden=false;b.disabled=false;b.innerHTML="Verify and create account";bad(x.message+" If the code arrived, enter it below. If not, use Send the code again.");document.getElementById("su_o").focus();return}}}
   d.otp=g("su_o");if(UI.otpFor&&!/^\d{6}$/.test(d.otp)){b.disabled=false;b.innerHTML="Verify and create account";return bad("Type the 6-digit code from your email.")}
   b.disabled=true;b.innerHTML="Creating your account…";
   try{const r=await api("signup",d);UI.otpFor="";TOKEN=r.token;ME=r.user;saveSession();toast("Welcome to Festora! Your free account is ready.");await enter()}
