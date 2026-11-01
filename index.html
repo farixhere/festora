@@ -929,7 +929,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    Every change is an "operation" sent to the server and
    replayed in the same order on every device.
    ========================================================= */
-const API = "https://festora-backend-staging-dupekingsam-7855.vercel.app/api/exec"; // Staging replacement API
+const API = "https://festora-backend-staging.vercel.app/api/exec"; // Staging replacement API
 const HAS_API = /^https:\/\/(?:script\.google(?:usercontent)?\.com\/|festora-backend-staging-[a-z0-9-]+\.vercel\.app\/api\/exec$)/.test(API) || /^http:\/\/127\.0\.0\.1:\d+\//.test(API);
 const TZ = 5.5 * 3600e3;
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
