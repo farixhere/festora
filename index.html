@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&family=Libre+Baskerville:wght@700&family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
 </style>
 <style>
@@ -1375,13 +1375,19 @@ td,th{border-bottom-color:var(--line)}
 .fq-fab svg{display:block;filter:drop-shadow(0 3px 3px rgba(25,23,23,.12))}
 .fq-av{width:38px;height:38px;border-radius:13px;background:#FFF0E5;display:grid;place-items:center;flex:0 0 auto}
 @media(max-width:760px){.lp-review-head{grid-template-columns:1fr;gap:16px}.lp-review-grid{grid-template-columns:1fr}.lp-review-card{min-height:210px}}
+
+/* ===== performance layer ===== */
+.hero::before,.lp-cta::before{display:none}
+.win,.lcard,.gate,.float{backdrop-filter:none;-webkit-backdrop-filter:none}
+.lcard,.gate{background-color:color-mix(in srgb,var(--surface) 94%,transparent)}
+.float{background-color:color-mix(in srgb,var(--surface) 94%,transparent)}
+.lp-cta,.foot{content-visibility:auto;contain-intrinsic-size:auto 640px}
 </style>
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="app"></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* =========================================================
    Festora · live site
@@ -2704,7 +2710,10 @@ function SCREEN_VIEW(){const pv=PUBV||{};if(pv.need||pv.closed)return PUBLIC_VIE
   <div class="sc-foot">${mark(20,"rgba(255,255,255,.8)")} Powered by Festora</div></div>`}
 
 /* ---------- QR codes ---------- */
-function renderQRs(){document.querySelectorAll(".qrx[data-q]").forEach(el=>{if(el.dataset.done===el.dataset.q)return;el.innerHTML="";el.dataset.done=el.dataset.q;
+let _qrState=0;
+function loadQR(cb){if(typeof QRCode!=="undefined")return cb();if(_qrState===1)return;_qrState=1;const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";sc.onload=()=>{_qrState=2;cb()};sc.onerror=()=>{_qrState=0;document.querySelectorAll(".qrx[data-q]").forEach(el=>{if(!el.firstChild)el.innerHTML=`<span class="qrfb">QR</span>`})};document.head.appendChild(sc)}
+function renderQRs(){if(!document.querySelector(".qrx[data-q]"))return;if(typeof QRCode==="undefined"){loadQR(renderQRs);return}
+ document.querySelectorAll(".qrx[data-q]").forEach(el=>{if(el.dataset.done===el.dataset.q)return;el.innerHTML="";el.dataset.done=el.dataset.q;
   if(typeof QRCode==="undefined"){el.innerHTML=`<span class="qrfb">QR</span>`;return}
   const sz=el.classList.contains("big")?150:72;try{new QRCode(el,{text:el.dataset.q,width:sz,height:sz,colorDark:"#0F2340",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}catch(e){el.innerHTML=`<span class="qrfb">QR</span>`}})}
 
